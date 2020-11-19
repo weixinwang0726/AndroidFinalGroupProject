@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.androidfinalgroupproject.covid19.Covid19Activity;
-import com.example.androidfinalgroupproject.masterticket.MasterTicketActivity;
+import com.example.androidfinalgroupproject.masterticket.TicketMasterActivity;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         Button goToMasterTicketBtn = findViewById(R.id.btn_to_master_ticket);
-        Intent goToMasterTicketIntent = new Intent(MainActivity.this, MasterTicketActivity.class);
+        Intent goToMasterTicketIntent = new Intent(MainActivity.this, TicketMasterActivity.class);
         goToMasterTicketBtn.setOnClickListener(click -> {
             Toast.makeText(MainActivity.this, getString(R.string.mt_toast_message), Toast.LENGTH_LONG).show();
             startActivity(goToMasterTicketIntent);
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void switchBetweenActivity(int id) {
         switch (id){
             case R.id.ticket_master:
-                startActivity(new Intent(MainActivity.this, MasterTicketActivity.class));
+                startActivity(new Intent(MainActivity.this, TicketMasterActivity.class));
                 break;
             case R.id.covid19:
                 startActivity(new Intent(MainActivity.this, Covid19Activity.class));

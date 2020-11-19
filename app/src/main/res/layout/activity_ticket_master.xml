@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".masterticket.MasterTicketActivity">
+    tools:context=".masterticket.TicketMasterActivity">
 
     <TextView
         android:id="@+id/longitude_input"

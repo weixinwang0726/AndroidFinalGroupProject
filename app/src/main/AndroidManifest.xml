@@ -12,7 +12,7 @@
         <activity android:name=".audio.AudioActivity"></activity>
         <activity android:name=".covid19.Covid19Activity" />
         <activity android:name=".recipe.RecipeActivity" />
-        <activity android:name=".masterticket.MasterTicketActivity" />
+        <activity android:name=".masterticket.TicketMasterActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

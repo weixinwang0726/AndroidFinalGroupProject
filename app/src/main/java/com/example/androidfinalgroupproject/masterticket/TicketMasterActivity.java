@@ -9,12 +9,12 @@ import android.view.MenuItem;
 import com.example.androidfinalgroupproject.R;
 import com.google.android.material.navigation.NavigationView;
 
-public class MasterTicketActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class TicketMasterActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_master_ticket);
+        setContentView(R.layout.activity_ticket_master);
     }
 
     @Override
