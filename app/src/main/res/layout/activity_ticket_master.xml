@@ -12,5 +12,4 @@
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
         android:hint="Here is Master Ticket.  2020-11-19...... morning...... sleepless."/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
