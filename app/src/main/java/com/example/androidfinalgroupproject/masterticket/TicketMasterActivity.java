@@ -13,6 +13,7 @@ public class TicketMasterActivity extends AppCompatActivity implements Navigatio
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //hello.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_master);
     }
