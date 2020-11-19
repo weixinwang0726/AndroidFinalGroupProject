@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item android:id="@+id/ticket_master"
+        android:orderInCategory="10"
+        app:showAsAction="always"
+        android:icon="@drawable/ticket_master"
+        android:title="@string/btn_to_ticket_master"/>
+
+    <item android:id="@+id/covid19"
+        android:orderInCategory="10"
+        app:showAsAction="always"
+        android:icon="@drawable/covid19"
+        android:title="@string/btn_to_covid19"/>
+
+
+</menu>

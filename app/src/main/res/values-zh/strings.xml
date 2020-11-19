@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidFinalGroupProject</string>
+    <string name="open">打开</string>
+    <string name="close">关闭</string>
+    <string name="btn_to_ticket_master">票务管理</string>
+    <string name="about_this_project">关于我们</string>
+    <string name="mt_toast_message">跳转到票务管理</string>
+    <string name="covid19_toast_message">跳转到Covid19</string>
+    <string name="btn_to_covid19">Covid19</string>
+</resources>
