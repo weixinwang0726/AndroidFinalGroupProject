@@ -8,4 +8,9 @@
     <string name="mt_toast_message">Go to MasterTicket Page</string>
     <string name="covid19_toast_message">Go to Covid19 Page</string>
     <string name="btn_to_covid19">Covid19</string>
+    <string name="ticket_master_activity_hint">Please input city and radius</string>
+    <string name="tm_city_hint">city name</string>
+    <string name="tm_radius_hint">radius</string>
+    <string name="tm_search_btn">Search</string>
+    <string name="tm_help_btn">Help</string>
 </resources>

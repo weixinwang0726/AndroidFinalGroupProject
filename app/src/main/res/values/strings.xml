@@ -7,4 +7,12 @@
     <string name="mt_toast_message">Go to TicketMaster Page</string>
     <string name="covid19_toast_message">Go to Covid19 Page</string>
     <string name="btn_to_covid19">Covid19</string>
+    <string name="ticket_master_activity_hint">ticket_master_activity_hint</string>
+    <string name="tm_city_hint">city name</string>
+    <string name="tm_radius_hint">radius</string>
+    <string name="tm_search_btn">Search</string>
+    <string name="tm_help_btn">Help</string>
+    <string name="tm_help_content">tm_help_content</string>
+    <string name="tm_yes">tm_yes</string>
+    <string name="tm_city_title">tm_city_title</string>
 </resources>

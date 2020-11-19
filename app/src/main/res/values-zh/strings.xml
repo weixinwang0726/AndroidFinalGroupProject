@@ -8,4 +8,9 @@
     <string name="mt_toast_message">跳转到票务管理</string>
     <string name="covid19_toast_message">跳转到Covid19</string>
     <string name="btn_to_covid19">Covid19</string>
+    <string name="ticket_master_activity_hint">请输入城市及变径</string>
+    <string name="tm_city_hint">城市名称</string>
+    <string name="tm_radius_hint">查询半径</string>
+    <string name="tm_search_btn">查询</string>
+    <string name="tm_help_btn">帮助</string>
 </resources>
