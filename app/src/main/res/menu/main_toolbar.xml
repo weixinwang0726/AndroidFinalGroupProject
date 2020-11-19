@@ -12,7 +12,7 @@
     <item android:id="@+id/covid19"
         android:orderInCategory="10"
         app:showAsAction="always"
-        android:icon="@drawable/ticket_master"
+        android:icon="@drawable/covid19"
         android:title="@string/btn_to_covid19"/>
 
 
