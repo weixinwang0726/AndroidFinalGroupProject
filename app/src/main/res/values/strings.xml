@@ -12,7 +12,19 @@
     <string name="tm_radius_hint">radius</string>
     <string name="tm_search_btn">Search</string>
     <string name="tm_help_btn">Help</string>
-    <string name="tm_help_content">tm_help_content</string>
-    <string name="tm_yes">tm_yes</string>
-    <string name="tm_city_title">tm_city_title</string>
+    <string name="tm_help_content">You can input the city and radius (a number ,for exampe, input 100 means the radius is 100 km) to search events nearby.
+        If there is a yellow star before the event name, it means that you have added this event as your favorite events</string>
+    <string name="tm_yes">Yse</string>
+    <string name="tm_city_title">City Name</string>
+    <string name="tm_city_name">City Name</string>
+    <string name="tm_tx_start_date">Start Date</string>
+    <string name="tm_tx_price_min">Price Min</string>
+    <string name="tm_tx_price_max">Price Max</string>
+    <string name="tm_tx_url">Url</string>
+    <string name="tm_tx_image_url">Image Url</string>
+    <string name="tm_favo_btn">Add Favorite</string>
+    <string name="tm_remove_favo_btn">Remove Favorite</string>
+    <string name="tm_detail_title">Event Info</string>
+    <string name="tm_tx_event_name">Event Name</string>
+    <string name="tm_favo_list_btn">Only Favorited</string>
 </resources>

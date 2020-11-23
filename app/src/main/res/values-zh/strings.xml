@@ -13,4 +13,18 @@
     <string name="tm_radius_hint">查询半径</string>
     <string name="tm_search_btn">查询</string>
     <string name="tm_help_btn">帮助</string>
+    <string name="tm_city_name">城市名称</string>
+    <string name="tm_tx_start_date">开始日期</string>
+    <string name="tm_tx_price_min">最低价格</string>
+    <string name="tm_tx_price_max">最高价格</string>
+    <string name="tm_tx_url">链接地址</string>
+    <string name="tm_tx_image_url">图片链接地址</string>
+    <string name="tm_favo_btn">收藏</string>
+    <string name="tm_detail_title">活动详情</string>
+    <string name="tm_city_title">城市名称</string>
+    <string name="tm_yes">是</string>
+    <string name="tm_help_content">帮助</string>
+    <string name="tm_remove_favo_btn">从收藏移除</string>
+    <string name="tm_tx_event_name">事件名称</string>
+    <string name="tm_favo_list_btn">收藏列表</string>
 </resources>
