@@ -4,13 +4,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
-
+    <ImageView
+        android:id="@+id/tm_image_star"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:visibility="invisible"
+        android:src="@drawable/star" />
+    <ImageButton
+        android:id="@+id/tm_delete_btn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:visibility="invisible"
+        android:src="@drawable/delete"
+        />
     <TextView
-        android:id="@+id/city_name_text_view"
+        android:id="@+id/tm_text_view"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
         android:text="@string/tm_city_title"
         android:textSize="20dp"
+        android:clickable="true"
         android:textColor="#FFFFFF"/>
+
     </LinearLayout>
