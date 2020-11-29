@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:id="@+id/audio_search"
+        android:orderInCategory="10"
+        app:showAsAction="always"
+        android:icon="@drawable/music"
+        android:title="@string/btn_to_audio_search"/>
 
     <item android:id="@+id/ticket_master"
         android:orderInCategory="10"

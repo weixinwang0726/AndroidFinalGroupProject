@@ -5,6 +5,7 @@
     <string name="close">关闭</string>
     <string name="btn_to_ticket_master">票务管理</string>
     <string name="about_this_project">关于我们</string>
+    <string name="audio_toast_message">跳到音乐搜索</string>
     <string name="mt_toast_message">跳转到票务管理</string>
     <string name="covid19_toast_message">跳转到Covid19</string>
     <string name="btn_to_covid19">Covid19</string>
@@ -27,4 +28,26 @@
     <string name="tm_remove_favo_btn">从收藏移除</string>
     <string name="tm_tx_event_name">事件名称</string>
     <string name="tm_favo_list_btn">收藏列表</string>
+
+    <!--    Audio Search Activity-->
+    <string name="drawer_open">打开</string>
+    <string name="drawer_close">关闭</string>
+    <string name="audio_search">音乐搜索</string>
+    <string name="btn_to_audio_search">音乐搜索</string>
+    <string name="btn_search">搜索</string>
+    <string name="load_albums">所有专辑都已加载</string>
+    <string name="title_favorite">喜爱列表</string>
+    <string name="title_album_page">专辑歌曲</string>
+    <string name="title_delete">删除 </string>
+    <string name="delete_message">您真的想删除该专辑吗？</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="cancel">取消</string>
+    <string name="cancelled">已取消</string>
+    <string name="snackbar_message"> 已经添加到喜爱列表中.</string>
+    <string name="toast_message">该专辑在喜爱列表中已存在</string>
+    <string name="main_page">主页面</string>
+    <string name="search_page">搜索页面</string>
+    <string name="favorite_list">喜爱列表</string>
+    <string name="title_menu">作者: Yanan Cheng  版本: 1.0</string>
 </resources>
