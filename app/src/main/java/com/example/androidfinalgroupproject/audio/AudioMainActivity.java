@@ -78,7 +78,7 @@ public class AudioMainActivity extends AppCompatActivity {
             }
         });
 
-        // 加载搜索界面
+        // ---加载搜索界面---
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.main_content, page)
@@ -86,7 +86,7 @@ public class AudioMainActivity extends AppCompatActivity {
                 .commit();
     }
 
-    // 使其他fragment能访问数据库
+    // ---使其他fragment能访问数据库
     public AlbumDataSource getDataSource() {
         return mDataSource;
     }
