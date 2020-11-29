@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidFinalGroupProject">
         <activity android:name=".masterticket.EventDetailActivity" />
-        <activity android:name=".audio.AudioActivity" />
+        <activity android:name=".audio.AudioMainActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".covid19.Covid19Activity" />
         <activity android:name=".recipe.RecipeActivity" />
         <activity android:name=".masterticket.TicketMasterActivity" />
