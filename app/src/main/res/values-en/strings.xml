@@ -52,4 +52,6 @@
     <string name="search_page">Search Page</string>
     <string name="favorite_list">Favorite List</string>
     <string name="title_menu">Author: Yanan Cheng Version: 1.0</string>
+    <string name="tm_snack_message_add">This event has been added to your favorite event list.</string>
+    <string name="tm_snack_message_remove">This event has been rmoved from your favorite event list.</string>
 </resources>
