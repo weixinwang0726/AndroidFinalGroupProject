@@ -90,7 +90,7 @@ public class EventDetailActivity extends AppCompatActivity {
 
         addToFavoriteBtn.setOnClickListener(click -> {
             addToFavoriteList();
-            Snackbar.make(click, e.getName() + getString(R.string.snackbar_message), BaseTransientBottomBar.LENGTH_LONG)
+            Snackbar.make(click, getString(R.string.tm_snack_message_add), BaseTransientBottomBar.LENGTH_LONG)
                     .setAction(getString(R.string.cancel), new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -104,7 +104,7 @@ public class EventDetailActivity extends AppCompatActivity {
 
         removeFromFavoriteBtn.setOnClickListener(click -> {
             removeFromFavoriteList();
-            Snackbar.make(click, getString(R.string.delete_message), BaseTransientBottomBar.LENGTH_LONG)
+            Snackbar.make(click, getString(R.string.tm_snack_message_add), BaseTransientBottomBar.LENGTH_LONG)
                     .setAction(getString(R.string.cancel), new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
