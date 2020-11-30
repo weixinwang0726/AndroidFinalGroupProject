@@ -1,4 +1,4 @@
-package com.example.androidfinalgroupproject.masterticket;
+package com.example.androidfinalgroupproject.ticketmaster;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -29,8 +29,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.androidfinalgroupproject.MainActivity;
 import com.example.androidfinalgroupproject.R;
+import com.example.androidfinalgroupproject.audio.AudioMainActivity;
 import com.example.androidfinalgroupproject.common.Const;
+import com.example.androidfinalgroupproject.covid19.Covid19Activity;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
@@ -54,15 +57,17 @@ public class TicketMasterActivity extends AppCompatActivity implements Navigatio
     private EventsAdapter citiesAdapter;
     ProgressBar progressBar;
     private List<Event> eventList = new ArrayList<>();
-    private List<Event> favotatedList = new ArrayList<>();
+    private List<Event> favoriteList = new ArrayList<>();
 
     private HashMap<String,Event> favotatedMap = new HashMap<String,Event>();
-    Intent gotoFavoriteList;
+
     Intent gotoEventDetail;
     Event e = new Event();
     EventOpener eventOpener;
     SQLiteDatabase db;
     private Helper tmHelper = new Helper();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //hello.
@@ -107,7 +112,7 @@ public class TicketMasterActivity extends AppCompatActivity implements Navigatio
         progressBar = findViewById(R.id.progress_horizontal);
         loadEventList("", "radius",true);
         eventList.clear();
-        for(Event e:favotatedList){
+        for(Event e: favoriteList){
             favotatedMap.put(e.getEventId(),e);
         }
 
@@ -155,18 +160,18 @@ public class TicketMasterActivity extends AppCompatActivity implements Navigatio
             Log.e("Request url", url);
             eventsQuery.execute(url);
 
-            favotatedList = getFavoriteEvents();
+            favoriteList = getFavoriteEvents();
             favotatedMap.clear();
-            for(Event e:favotatedList){
+            for(Event e: favoriteList){
                 favotatedMap.put(e.getEventId(),e);
             }
         }else{
             eventList.clear();
             progressBar.setVisibility(View.VISIBLE);
 
-            favotatedList = getFavoriteEvents();
+            favoriteList = getFavoriteEvents();
 
-            eventList.addAll(favotatedList);
+            eventList.addAll(favoriteList);
             if (eventList.size() == 0) {
                 Toast.makeText(TicketMasterActivity.this, "No events nearby", Toast.LENGTH_LONG).show();
             }
@@ -231,6 +236,8 @@ public class TicketMasterActivity extends AppCompatActivity implements Navigatio
             return rowView;
         }
     }
+
+
     private class EventsQuery extends AsyncTask<String, Integer, String> {
 
         private List<Event> eventResults = new ArrayList();
