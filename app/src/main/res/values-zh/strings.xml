@@ -4,7 +4,6 @@
     <string name="open">打开</string>
     <string name="close">关闭</string>
     <string name="btn_to_ticket_master">票务管理</string>
-    <string name="about_this_project">关于我们</string>
     <string name="audio_toast_message">跳到音乐搜索</string>
     <string name="mt_toast_message">跳转到票务管理</string>
     <string name="covid19_toast_message">跳转到Covid19</string>
@@ -24,7 +23,7 @@
     <string name="tm_detail_title">活动详情</string>
     <string name="tm_city_title">城市名称</string>
     <string name="tm_yes">是</string>
-    <string name="tm_help_content">帮助</string>
+    <string name="tm_help_content">输入城市及半径，然后点击查询，进行事件查询</string>
     <string name="tm_remove_favo_btn">从收藏移除</string>
     <string name="tm_tx_event_name">事件名称</string>
     <string name="tm_favo_list_btn">收藏列表</string>
@@ -50,4 +49,5 @@
     <string name="search_page">搜索页面</string>
     <string name="favorite_list">喜爱列表</string>
     <string name="title_menu">作者: Yanan Cheng  版本: 1.0</string>
+    <string name="about_this_project">集体项目</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.androidfinalgroupproject.masterticket;
+package com.example.androidfinalgroupproject.ticketmaster;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +21,8 @@ import android.widget.Toast;
 
 import com.example.androidfinalgroupproject.R;
 import com.example.androidfinalgroupproject.common.Const;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -88,10 +90,28 @@ public class EventDetailActivity extends AppCompatActivity {
 
         addToFavoriteBtn.setOnClickListener(click -> {
             addToFavoriteList();
+            Snackbar.make(click, e.getName() + getString(R.string.snackbar_message), BaseTransientBottomBar.LENGTH_LONG)
+                    .setAction(getString(R.string.cancel), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            removeFromFavoriteList();
+                            Snackbar.make(v, getString(R.string.cancelled), BaseTransientBottomBar.LENGTH_LONG).show();
+                        }
+                    }).show();
+
+
         });
 
         removeFromFavoriteBtn.setOnClickListener(click -> {
             removeFromFavoriteList();
+            Snackbar.make(click, getString(R.string.delete_message), BaseTransientBottomBar.LENGTH_LONG)
+                    .setAction(getString(R.string.cancel), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            addToFavoriteList();
+                            Snackbar.make(v, getString(R.string.cancelled), BaseTransientBottomBar.LENGTH_LONG).show();
+                        }
+                    }).show();
         });
     }
 
@@ -153,7 +173,7 @@ public class EventDetailActivity extends AppCompatActivity {
 
         long newId = db.insert(Const.TABLE_NAME_TM, null, newRowValues);
         this.id = newId;
-        Toast.makeText(EventDetailActivity.this, "Successfully added!", Toast.LENGTH_LONG).show();
+        //Toast.makeText(EventDetailActivity.this, "Successfully added!", Toast.LENGTH_LONG).show();
         determineWhichBtnShow();
     }
 
@@ -163,7 +183,7 @@ public class EventDetailActivity extends AppCompatActivity {
     private void removeFromFavoriteList() {
         String whereClause =EventOpener.COL_EVENT_ID + " =? ";
         db.delete(Const.TABLE_NAME_TM, whereClause, new String[]{e.getEventId()});
-        Toast.makeText(EventDetailActivity.this, "Successfully removed!", Toast.LENGTH_LONG).show();
+        //Toast.makeText(EventDetailActivity.this, "Successfully removed!", Toast.LENGTH_LONG).show();
         determineWhichBtnShow();
     }
 

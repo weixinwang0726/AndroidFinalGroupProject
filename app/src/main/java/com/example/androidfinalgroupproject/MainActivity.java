@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.example.androidfinalgroupproject.audio.AudioMainActivity;
 import com.example.androidfinalgroupproject.covid19.Covid19Activity;
-import com.example.androidfinalgroupproject.masterticket.TicketMasterActivity;
+import com.example.androidfinalgroupproject.ticketmaster.TicketMasterActivity;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -72,6 +72,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    /**
+     * this is the left menu bar.
+     * @param item
+     * @return
+     */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switchBetweenActivity(item.getItemId());
@@ -91,5 +96,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         }
+    }
+
+    /**
+     * this is the left top bar.
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        String message = null;
+        //Look at your menu XML file. Put a case for every id in that file:
+        switch(item.getItemId())
+        {
+            case R.id.audio_search:
+                startActivity(new Intent(MainActivity.this, AudioMainActivity.class));
+                break;
+            case R.id.ticket_master:
+                startActivity(new Intent(MainActivity.this, TicketMasterActivity.class));
+                break;
+            case R.id.covid19:
+                startActivity(new Intent(MainActivity.this, Covid19Activity.class));
+                break;
+        }
+        return true;
     }
 }

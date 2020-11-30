@@ -3,7 +3,7 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="btn_to_ticket_master">TicketMaster</string>
-    <string name="about_this_project">About</string>
+    <string name="about_this_project">"FinalGroupProject "</string>
     <string name="audio_toast_message">Go to AudioSearch Page</string>
     <string name="mt_toast_message">Go to TicketMaster Page</string>
     <string name="covid19_toast_message">Go to Covid19 Page</string>

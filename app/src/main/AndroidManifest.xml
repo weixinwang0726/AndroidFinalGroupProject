@@ -11,11 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidFinalGroupProject">
-        <activity android:name=".masterticket.EventDetailActivity" />
+        <activity android:name=".ticketmaster.EventDetailActivity" />
         <activity android:name=".audio.AudioMainActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".covid19.Covid19Activity" />
         <activity android:name=".recipe.RecipeActivity" />
-        <activity android:name=".masterticket.TicketMasterActivity" />
+        <activity android:name=".ticketmaster.TicketMasterActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

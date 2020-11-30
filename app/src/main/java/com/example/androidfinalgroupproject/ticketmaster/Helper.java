@@ -1,4 +1,4 @@
-package com.example.androidfinalgroupproject.masterticket;
+package com.example.androidfinalgroupproject.ticketmaster;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
