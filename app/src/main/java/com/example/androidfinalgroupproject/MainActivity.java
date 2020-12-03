@@ -14,8 +14,9 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.androidfinalgroupproject.audio.AudioMainActivity;
 import com.example.androidfinalgroupproject.covid19.Covid19Activity;
-import com.example.androidfinalgroupproject.masterticket.TicketMasterActivity;
+import com.example.androidfinalgroupproject.ticketmaster.TicketMasterActivity;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -37,6 +38,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setItemIconTintList(null); //this line avoids the icons to appear shaded gray. src: https://stackoverflow.com/questions/31394265/navigation-drawer-item-icon-not-showing-original-colour
         navigationView.setNavigationItemSelectedListener(this);
+
+        Button goToAudioSearchBtn = findViewById(R.id.btn_to_audio_search);
+        Intent goToAudioIntent = new Intent(MainActivity.this, AudioMainActivity.class);
+        goToAudioSearchBtn.setOnClickListener(click -> {
+            Toast.makeText(MainActivity.this, getString(R.string.audio_toast_message), Toast.LENGTH_LONG).show();
+            startActivity(goToAudioIntent);
+        });
 
         Button goToMasterTicketBtn = findViewById(R.id.btn_to_master_ticket);
         Intent goToMasterTicketIntent = new Intent(MainActivity.this, TicketMasterActivity.class);
@@ -64,6 +72,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    /**
+     * this is the left menu bar.
+     * @param item
+     * @return
+     */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switchBetweenActivity(item.getItemId());
@@ -71,6 +84,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     public void switchBetweenActivity(int id) {
         switch (id){
+            case R.id.audio_search:
+                startActivity(new Intent(MainActivity.this, AudioMainActivity.class));
+                break;
             case R.id.ticket_master:
                 startActivity(new Intent(MainActivity.this, TicketMasterActivity.class));
                 break;
@@ -80,5 +96,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         }
+    }
+
+    /**
+     * this is the left top bar.
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        String message = null;
+        //Look at your menu XML file. Put a case for every id in that file:
+        switch(item.getItemId())
+        {
+            case R.id.audio_search:
+                startActivity(new Intent(MainActivity.this, AudioMainActivity.class));
+                break;
+            case R.id.ticket_master:
+                startActivity(new Intent(MainActivity.this, TicketMasterActivity.class));
+                break;
+            case R.id.covid19:
+                startActivity(new Intent(MainActivity.this, Covid19Activity.class));
+                break;
+        }
+        return true;
     }
 }

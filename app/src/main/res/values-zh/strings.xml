@@ -3,8 +3,8 @@
     <string name="app_name">AndroidFinalGroupProject</string>
     <string name="open">打开</string>
     <string name="close">关闭</string>
-    <string name="btn_to_ticket_master">票务管理</string>
-    <string name="about_this_project">关于我们</string>
+    <string name="btn_to_ticket_master">"票务管理 "</string>
+    <string name="audio_toast_message">跳到音乐搜索</string>
     <string name="mt_toast_message">跳转到票务管理</string>
     <string name="covid19_toast_message">跳转到Covid19</string>
     <string name="btn_to_covid19">Covid19</string>
@@ -13,9 +13,52 @@
     <string name="tm_radius_hint">查询半径</string>
     <string name="tm_search_btn">查询</string>
     <string name="tm_help_btn">帮助</string>
+
     <string name="btn_to_recipe">菜单搜索</string>
     <string name="recipe_header">欢迎来到菜单搜索</string>
     <string name="searchRecipeName">输入要搜索的菜单名</string>
     <string name="recipe_search_btn">搜索</string>
     <string name="saveFavRecipe">收藏菜单</string>
+
+    <string name="tm_city_name">城市名称</string>
+    <string name="tm_tx_start_date">开始日期</string>
+    <string name="tm_tx_price_min">最低价格</string>
+    <string name="tm_tx_price_max">最高价格</string>
+    <string name="tm_tx_url">链接地址</string>
+    <string name="tm_tx_image_url">图片链接地址</string>
+    <string name="tm_favo_btn">收藏</string>
+    <string name="tm_detail_title">活动详情</string>
+    <string name="tm_city_title">城市名称</string>
+    <string name="tm_yes">是</string>
+    <string name="tm_help_content">输入城市及半径，然后点击查询，进行事件查询</string>
+    <string name="tm_remove_favo_btn">从收藏移除</string>
+    <string name="tm_tx_event_name">事件名称</string>
+    <string name="tm_favo_list_btn">收藏列表</string>
+
+    <!--    Audio Search Activity-->
+    <string name="drawer_open">打开</string>
+    <string name="drawer_close">关闭</string>
+    <string name="audio_search">音乐搜索</string>
+    <string name="btn_to_audio_search">音乐搜索</string>
+    <string name="btn_search">搜索</string>
+    <string name="load_albums">所有专辑都已加载</string>
+    <string name="title_favorite">喜爱列表</string>
+    <string name="title_album_page">专辑歌曲</string>
+    <string name="title_delete">删除 </string>
+    <string name="delete_message">您真的想删除该专辑吗？</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="cancel">取消</string>
+    <string name="cancelled">已取消</string>
+    <string name="snackbar_message"> 已经添加到喜爱列表中.</string>
+    <string name="toast_message">该专辑在喜爱列表中已存在</string>
+    <string name="main_page">主页面</string>
+    <string name="search_page">搜索页面</string>
+    <string name="favorite_list">喜爱列表</string>
+    <string name="title_menu">作者: Yanan Cheng  版本: 1.0</string>
+    <string name="about_this_project">集体项目</string>
+    <string name="tm_snack_message_add">事件已经被加入收藏列表</string>
+    <string name="tm_snack_message_remove">事件已经被从收藏列表中移除</string>
+    <string name="tm_title_menu">作者:Weixin Wang. 版本:1.0</string>
+
 </resources>

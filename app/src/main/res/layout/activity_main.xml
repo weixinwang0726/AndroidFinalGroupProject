@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
             <Button
                 android:id="@+id/btn_to_master_ticket"
                 android:layout_width="match_parent"
@@ -39,11 +40,19 @@
                 android:layout_height="wrap_content"
                 android:text="@string/btn_to_covid19" />
 
+
             <Button
                 android:id="@+id/btn_to_recipe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_to_recipe" />
+
+            <Button
+                android:id="@+id/btn_to_audio_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_to_audio_search" />
+
 
         </LinearLayout>
 

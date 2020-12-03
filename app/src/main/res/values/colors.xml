@@ -7,4 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+<!--    Audio Search Activity   -->
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorBackground">#234a7d</color>
+    <color name="colorBackgroundChange">#3e618c</color>
+    <color name="colorBar">#3d618b</color>
+    <color name="colorBarChange">#59799e</color>
+    <color name="colorText">#d8dfe8</color>
 </resources>

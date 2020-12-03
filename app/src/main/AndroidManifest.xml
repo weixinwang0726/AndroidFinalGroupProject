@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.androidfinalgroupproject">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,13 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidFinalGroupProject">
-        <activity android:name=".masterticket.RowData"></activity>
-        <activity android:name=".masterticket.CityDetailActivity" />
-        <activity android:name=".masterticket.FavoriteCitiesActivity" />
-        <activity android:name=".audio.AudioActivity" />
+        <activity android:name=".ticketmaster.EventDetailActivity" />
+        <activity android:name=".audio.AudioMainActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".covid19.Covid19Activity" />
         <activity android:name=".recipe.RecipeActivity" />
-        <activity android:name=".masterticket.TicketMasterActivity" />
+        <activity android:name=".ticketmaster.TicketMasterActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

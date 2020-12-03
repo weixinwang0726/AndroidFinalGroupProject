@@ -3,7 +3,8 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="btn_to_ticket_master">TicketMaster</string>
-    <string name="about_this_project">About</string>
+    <string name="about_this_project">"FinalGroupProject "</string>
+    <string name="audio_toast_message">Go to AudioSearch Page</string>
     <string name="mt_toast_message">Go to TicketMaster Page</string>
     <string name="covid19_toast_message">Go to Covid19 Page</string>
     <string name="btn_to_covid19">Covid19</string>
@@ -12,6 +13,7 @@
     <string name="tm_radius_hint">radius</string>
     <string name="tm_search_btn">Search</string>
     <string name="tm_help_btn">Help</string>
+
     <string name="tm_help_content">tm_help_content</string>
     <string name="tm_yes">tm_yes</string>
     <string name="tm_city_title">tm_city_title</string>
@@ -20,4 +22,46 @@
     <string name="searchRecipeName">Enter the name of recipe to search</string>
     <string name="recipe_search_btn">search</string>
     <string name="saveFavRecipe">Save to Favourite</string>
+
+    <string name="tm_help_content">You can input the city and radius (a number ,for exampe, input 100 means the radius is 100 km) to search events nearby.
+        If there is a yellow star before the event name, it means that you have added this event as your favorite events</string>
+    <string name="tm_yes">Yse</string>
+    <string name="tm_city_title">City Name</string>
+    <string name="tm_city_name">City Name</string>
+    <string name="tm_tx_start_date">Start Date</string>
+    <string name="tm_tx_price_min">Price Min</string>
+    <string name="tm_tx_price_max">Price Max</string>
+    <string name="tm_tx_url">Url</string>
+    <string name="tm_tx_image_url">Image Url</string>
+    <string name="tm_favo_btn">Add Favorite</string>
+    <string name="tm_remove_favo_btn">Remove Favorite</string>
+    <string name="tm_detail_title">Event Info</string>
+    <string name="tm_tx_event_name">Event Name</string>
+    <string name="tm_favo_list_btn">Only Favorited</string>
+
+    <!--    Audio Search Activity-->
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
+    <string name="audio_search">AudioSearch</string>
+    <string name="btn_to_audio_search">AudioSearch</string>
+    <string name="btn_search">search</string>
+    <string name="load_albums">All albums loaded</string>
+    <string name="title_favorite">Favorite List</string>
+    <string name="title_album_page">Album Songs</string>
+    <string name="title_delete">Delete </string>
+    <string name="delete_message">Do you really want to delete this album from list?</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="cancel">Cancel</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="snackbar_message"> has added to favorite list.</string>
+    <string name="toast_message">The album is already in favorite list</string>
+    <string name="main_page">Main Page</string>
+    <string name="search_page">Search Page</string>
+    <string name="favorite_list">Favorite List</string>
+    <string name="title_menu">Author: Yanan Cheng Version: 1.0</string>
+    <string name="tm_snack_message_add">This event has been added to your favorite event list.</string>
+    <string name="tm_snack_message_remove">This event has been rmoved from your favorite event list.</string>
+    <string name="tm_title_menu">autthor:Weixin Wang.    version: 1.0</string>
+
 </resources>

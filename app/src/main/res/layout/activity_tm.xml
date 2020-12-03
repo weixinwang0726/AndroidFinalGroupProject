@@ -6,7 +6,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".masterticket.TicketMasterActivity">
+        tools:context=".ticketmaster.TicketMasterActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/mainBar"
         android:layout_width="match_parent"
@@ -23,10 +23,10 @@
         tools:openDrawer="start"
         >
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/ticket_master"
+            android:background="@drawable/tm_background"
             android:orientation="vertical">
 
             <ProgressBar
@@ -36,39 +36,31 @@
                 android:layout_height="wrap_content"
                 android:visibility="invisible" />
 
-            <TextView
-                android:id="@+id/hint_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ticket_master_activity_hint"
-                android:textColor="#FFFFFF"
-                android:textSize="20dp"/>
 
 
-            <LinearLayout
+
+        <LinearLayout
                 android:id="@+id/search_div"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/latitude_input"
+                    android:id="@+id/tm_city_input"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:hint="@string/tm_city_hint"
-                    android:inputType="numberSigned|numberDecimal"
                     android:backgroundTint="@android:color/white"
                     android:textColor="#FAFDFD"
                     android:textColorHint="#FAFDFD"/>
 
                 <EditText
-                    android:id="@+id/longitude_input"
+                    android:id="@+id/tm_radius_input"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:hint="@string/tm_radius_hint"
-                    android:inputType="numberSigned|numberDecimal"
                     android:backgroundTint="@android:color/white"
                     android:textColor="#FAFDFD"
                     android:textColorHint="#FAFDFD"/>
@@ -78,6 +70,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:divider="@drawable/tm_divider"
+                android:showDividers="middle"
+                android:dividerPadding="1dp"
                 android:orientation="horizontal">
 
                 <Button
@@ -87,23 +82,25 @@
                     android:text="@string/tm_search_btn" />
 
                 <Button
+                    android:id="@+id/favorite_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tm_favo_list_btn" />
+
+                <Button
                     android:id="@+id/help_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tm_help_btn" />
 
-                <Button
-                    android:id="@+id/favorite_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tm_help_btn" />
             </LinearLayout>
 
 
             <ListView
-                android:id="@+id/city_list_view"
+                android:id="@+id/event_list_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                />
         </LinearLayout>
 
         <com.google.android.material.navigation.NavigationView
@@ -113,7 +110,7 @@
             android:layout_gravity="start"
             android:background="#303F9F"
             android:fitsSystemWindows="true"
-            app:headerLayout="@layout/header_for_all"
+            app:headerLayout="@layout/tm_header"
             app:itemTextColor="#FFFFFF"
             app:menu="@menu/main_toolbar" />
     </androidx.drawerlayout.widget.DrawerLayout>
