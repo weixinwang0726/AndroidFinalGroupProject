@@ -97,5 +97,6 @@
     <string name="covidtitle">Activity Title: Covid-19 Case Data</string>
     <string name="covidauthor">Author: Jenny Yan</string>
     <string name="covidversion">Version No.: 1.0 </string>
+    <string name="recipe_toast_message">GO to Recipe</string>
 
 </resources>

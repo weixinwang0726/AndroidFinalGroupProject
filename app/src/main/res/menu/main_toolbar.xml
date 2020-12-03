@@ -22,7 +22,7 @@
         android:title="@string/btn_to_audio_search"/>
 
     <item android:id="@+id/recipe"
-        android:orderInCategory="500"
+        android:orderInCategory="200"
         app:showAsAction="always"
         android:icon="@drawable/recipeicon"
         android:title="RecipeSearch"/>

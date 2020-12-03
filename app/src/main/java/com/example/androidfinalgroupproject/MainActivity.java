@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.androidfinalgroupproject.audio.AudioMainActivity;
 import com.example.androidfinalgroupproject.covid19.Covid19Case;
+import com.example.androidfinalgroupproject.recipe.RecipeActivity;
 import com.example.androidfinalgroupproject.ticketmaster.TicketMasterActivity;
 import com.google.android.material.navigation.NavigationView;
 
@@ -62,6 +63,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(MainActivity.this, getString(R.string.covid19_toast_message), Toast.LENGTH_LONG).show();
             startActivity(goToCovide19Intent);
         });
+
+        Button goToRecipeBtn = findViewById(R.id.btn_to_recipe);
+        Intent goToRecipeIntent = new Intent(MainActivity.this, RecipeActivity.class);
+        goToRecipeBtn.setOnClickListener(click -> {
+            Toast.makeText(MainActivity.this, getString(R.string.recipe_toast_message), Toast.LENGTH_LONG).show();
+            startActivity(goToRecipeIntent);
+        });
     }
 
     @Override
@@ -94,7 +102,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(MainActivity.this, Covid19Case.class));
                 break;
 
-
+            case R.id.recipe:
+                startActivity(new Intent(MainActivity.this, RecipeActivity.class));
+                break;
         }
     }
 
