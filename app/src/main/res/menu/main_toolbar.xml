@@ -12,20 +12,19 @@
     <item android:id="@+id/covid19"
         android:orderInCategory="300"
         app:showAsAction="always"
-        android:icon="@drawable/ticket_master"
+        android:icon="@drawable/covid19"
         android:title="@string/btn_to_covid19"/>
-
-
-    <item android:id="@+id/recipe"
-        android:orderInCategory="200"
-        app:showAsAction="always"
-        android:icon="@drawable/recipeicon"
-        android:title="@string/btn_to_recipe"/>
 
     <item android:id="@+id/audio_search"
         android:orderInCategory="400"
         app:showAsAction="always"
         android:icon="@drawable/music"
         android:title="@string/btn_to_audio_search"/>
+
+    <item android:id="@+id/recipe"
+        android:orderInCategory="500"
+        app:showAsAction="always"
+        android:icon="@drawable/recipeicon"
+        android:title="RecipeSearch"/>
 
 </menu>
