@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/tm_title_menu"
+        android:textAlignment="viewStart"
+        android:textColor="#303F9F"
+        android:textSize="15dp"
+        android:textStyle="italic" />
+
+</LinearLayout>
