@@ -20,8 +20,7 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:openDrawer="start"
-        >
+        tools:openDrawer="start">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
@@ -33,12 +32,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_to_ticket_master" />
+
             <Button
                 android:id="@+id/btn_to_covid19"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_to_covid19" />
 
+            <Button
+                android:id="@+id/btn_to_recipe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_to_recipe" />
 
         </LinearLayout>
 

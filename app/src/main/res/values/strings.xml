@@ -15,4 +15,9 @@
     <string name="tm_help_content">tm_help_content</string>
     <string name="tm_yes">tm_yes</string>
     <string name="tm_city_title">tm_city_title</string>
+    <string name="btn_to_recipe">Recipe</string>
+    <string name="recipe_header">Welcome to Recipe Search</string>
+    <string name="searchRecipeName">Enter the name of recipe to search</string>
+    <string name="recipe_search_btn">search</string>
+    <string name="saveFavRecipe">Save to Favourite</string>
 </resources>

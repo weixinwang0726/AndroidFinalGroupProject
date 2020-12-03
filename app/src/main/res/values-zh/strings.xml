@@ -13,4 +13,9 @@
     <string name="tm_radius_hint">查询半径</string>
     <string name="tm_search_btn">查询</string>
     <string name="tm_help_btn">帮助</string>
+    <string name="btn_to_recipe">菜单搜索</string>
+    <string name="recipe_header">欢迎来到菜单搜索</string>
+    <string name="searchRecipeName">输入要搜索的菜单名</string>
+    <string name="recipe_search_btn">搜索</string>
+    <string name="saveFavRecipe">收藏菜单</string>
 </resources>
