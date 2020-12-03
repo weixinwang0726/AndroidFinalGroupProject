@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.androidfinalgroupproject.audio.AudioMainActivity;
-import com.example.androidfinalgroupproject.covid19.Covid19Activity;
 import com.example.androidfinalgroupproject.covid19.Covid19Case;
 import com.example.androidfinalgroupproject.ticketmaster.TicketMasterActivity;
 import com.google.android.material.navigation.NavigationView;
@@ -58,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         Button goToCovid19Btn = findViewById(R.id.btn_to_covid19);
-        Intent goToCovide19Intent = new Intent(MainActivity.this, Covid19Activity.class);
+        Intent goToCovide19Intent = new Intent(MainActivity.this, Covid19Case.class);
         goToCovid19Btn.setOnClickListener(click -> {
             Toast.makeText(MainActivity.this, getString(R.string.covid19_toast_message), Toast.LENGTH_LONG).show();
             startActivity(goToCovide19Intent);
@@ -117,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(MainActivity.this, TicketMasterActivity.class));
                 break;
             case R.id.covid19:
-                startActivity(new Intent(MainActivity.this, Covid19Activity.class));
+                startActivity(new Intent(MainActivity.this, Covid19Case.class));
                 break;
         }
         return true;

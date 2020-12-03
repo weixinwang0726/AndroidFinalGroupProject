@@ -29,11 +29,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.androidfinalgroupproject.MainActivity;
 import com.example.androidfinalgroupproject.R;
-import com.example.androidfinalgroupproject.audio.AudioMainActivity;
 import com.example.androidfinalgroupproject.common.Const;
-import com.example.androidfinalgroupproject.covid19.Covid19Activity;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
