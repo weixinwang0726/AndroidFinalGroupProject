@@ -13,6 +13,13 @@
     <string name="tm_radius_hint">radius</string>
     <string name="tm_search_btn">Search</string>
     <string name="tm_help_btn">Help</string>
+
+    <string name="btn_to_recipe">Recipe</string>
+    <string name="recipe_header">Welcome to Recipe Search</string>
+    <string name="searchRecipeName">Enter the name of recipe to search</string>
+    <string name="recipe_search_btn">search</string>
+    <string name="saveFavRecipe">Save to Favourite</string>
+
     <string name="tm_help_content">You can input the city and radius (a number ,for exampe, input 100 means the radius is 100 km) to search events nearby.
         If there is a yellow star before the event name, it means that you have added this event as your favorite events</string>
     <string name="tm_yes">Yse</string>
@@ -55,6 +62,7 @@
     <string name="tm_title_menu">autthor:Weixin Wang.    version: 1.0</string>
 
 
+
     <string name="covid_toast_message">Covid-19 Case Data Activity\nWritten by: Ivy Xue.</string>
 
     <string name="btn_to_Covid19Case">Covid-19 Case</string>
@@ -91,4 +99,5 @@
     <string name="covidtitle">Activity Title: Covid-19 Case Data</string>
     <string name="covidauthor">Author: Jenny Yan</string>
     <string name="covidversion">Version No.: 1.0 </string>
+
 </resources>
