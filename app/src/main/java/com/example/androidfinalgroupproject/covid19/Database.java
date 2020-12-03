@@ -17,7 +17,7 @@ public class Database {
     }
 
     public String getCountry() {
-        return getCountry();
+        return this.country;
     }
     public void setCountry(String country) {
         this.country = country;

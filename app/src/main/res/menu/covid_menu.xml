@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/item1"
+        android:title="@string/choice1"
+        android:icon="@drawable/mainpage"
+        android:orderInCategory="25"
+        app:showAsAction="always"/> <!--go to main page-->
+
+    <item android:id="@+id/item2"
+        android:title="@string/choice2"
+        android:orderInCategory="50"
+        android:icon="@drawable/database"
+        app:showAsAction="always" /> <!--records saved in Database-->
+
+    <item android:id="@+id/item3"
+        android:title="@string/choice3"
+        android:icon="@drawable/usermanual"
+        app:showAsAction="always"
+        android:orderInCategory="75"/> <!--help to pop alterdialog for instruction-->
+
+    <item android:id="@+id/item4"
+        android:icon="@drawable/about"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="@string/choice4"/> <!--about for any extra info.-->
+
+</menu>

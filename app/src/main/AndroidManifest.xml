@@ -13,9 +13,10 @@
         android:theme="@style/Theme.AndroidFinalGroupProject">
         <activity android:name=".ticketmaster.EventDetailActivity" />
         <activity android:name=".audio.AudioMainActivity" android:theme="@style/AppTheme"/>
-        <activity android:name=".covid19.Covid19Activity" />
         <activity android:name=".recipe.RecipeActivity" />
         <activity android:name=".ticketmaster.TicketMasterActivity" />
+        <activity android:name=".covid19.Covid19Case"/>
+        <activity android:name=".covid19.ProvinceDetailActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

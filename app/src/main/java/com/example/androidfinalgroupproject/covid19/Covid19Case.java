@@ -39,7 +39,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import android.view.Menu;
@@ -74,7 +78,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_covid19_case);
 
-        boolean isTablet = findViewById(R.id.covidfragmentLocation) != null;
+//        boolean isTablet = findViewById(R.id.covidfragmentLocation) != null;
 
         /*
         put and set toolbar:
@@ -169,21 +173,21 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
             dataToPass.putString("Lat", province.getLatitude());
             dataToPass.putString("Lon", province.getLongitude());
 
-            if(isTablet)
-            {
-                //add a CovidDetialsFragment
-                dFragment.setArguments( dataToPass ); //pass it a bundle for information
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.covidfragmentLocation, dFragment) //add fragment to frame layout
-                        .commit(); //load the fragment
-            }
-            else //is phone
-            {
+//            if(isTablet)
+//            {
+//                //add a CovidDetialsFragment
+//                dFragment.setArguments( dataToPass ); //pass it a bundle for information
+//                getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.covidfragmentLocation, dFragment) //add fragment to frame layout
+//                        .commit(); //load the fragment
+//            }
+//            else //is phone
+//            {
                 Intent nextActivity = new Intent(Covid19Case.this, ProvinceDetailActivity.class);
                 nextActivity.putExtras(dataToPass); //send data to next activity
                 startActivity(nextActivity); //make the transition
-            }
+//            }
         });
 
     }
@@ -205,8 +209,23 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
 //        databaseListView.setVisibility( View.INVISIBLE );
         ProvincesQuery provincesQuery = new ProvincesQuery();
 
-        String datePlusOne = date.substring(0, 8) + (Integer.parseInt( date.substring(8, 10) ) + 1) + "" ;
-        provincesQuery.execute(String.format("https://api.covid19api.com/country/%s/status/confirmed/live?from=%sT00:00:00Z&to=%sT00:00:00Z", country, date, datePlusOne));
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Date d1 = null;
+        try {
+            d1 = df.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            d1 = Calendar.getInstance().getTime();
+        }
+        Calendar c = Calendar.getInstance();
+        c.setTime(d1);
+        c.add(Calendar.DAY_OF_MONTH,1);
+        Date d2 = c.getTime();
+        String datePlusOne = df.format(d2);
+
+        String url = String.format("https://api.covid19api.com/country/%s/status/confirmed/live?from=%sT00:00:00Z&to=%sT00:00:00Z", country, date, datePlusOne);
+
+        provincesQuery.execute(url);
     }
 
 
