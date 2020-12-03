@@ -61,8 +61,6 @@
     <string name="tm_snack_message_remove">This event has been rmoved from your favorite event list.</string>
     <string name="tm_title_menu">autthor:Weixin Wang.    version: 1.0</string>
 
-
-
     <string name="covid_toast_message">Covid-19 Case Data Activity\nWritten by: Ivy Xue.</string>
 
     <string name="btn_to_Covid19Case">Covid-19 Case</string>
