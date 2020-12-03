@@ -1,14 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".recipe.RecipeActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
     <TextView
-        android:id="@+id/tm_radius_input"
-        android:layout_width="wrap_content"
+
+        android:id="@+id/recipe_header"
+        android:layout_width="match_parent"
+
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
-        android:hint="Here is Recipe Search."/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="@string/recipe_header"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/RecipeSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/searchRecipeName"
+
+        android:textSize="15sp" />
+
+
+    <EditText
+        android:id="@+id/recipeName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp" />
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/recipe_search_btn"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:textSize="18sp" />
+
+
+
+    <Button
+        android:id="@+id/searchRecipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/recipe_search_btn"
+        android:textSize="24sp" />
+
+    <Button
+
+        android:id="@+id/favourite_recipe_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/saveFavRecipe"
+        android:nextFocusUp="@id/searchRecipe"
+        android:nextFocusDown="@id/RecipeResult"
+
+        />
+<ListView
+    android:id="@+id/RecipeResult"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    />
+</LinearLayout>
