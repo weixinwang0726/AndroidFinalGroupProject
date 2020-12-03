@@ -110,7 +110,7 @@
             android:layout_gravity="start"
             android:background="#303F9F"
             android:fitsSystemWindows="true"
-            app:headerLayout="@layout/header_for_all"
+            app:headerLayout="@layout/tm_header"
             app:itemTextColor="#FFFFFF"
             app:menu="@menu/main_toolbar" />
     </androidx.drawerlayout.widget.DrawerLayout>
