@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.androidfinalgroupproject.audio.AudioMainActivity;
 import com.example.androidfinalgroupproject.covid19.Covid19Activity;
+import com.example.androidfinalgroupproject.covid19.Covid19Case;
 import com.example.androidfinalgroupproject.ticketmaster.TicketMasterActivity;
 import com.google.android.material.navigation.NavigationView;
 
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(MainActivity.this, TicketMasterActivity.class));
                 break;
             case R.id.covid19:
-                startActivity(new Intent(MainActivity.this, Covid19Activity.class));
+                startActivity(new Intent(MainActivity.this, Covid19Case.class));
                 break;
 
 
