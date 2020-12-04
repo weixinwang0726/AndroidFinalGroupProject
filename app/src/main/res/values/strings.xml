@@ -62,7 +62,6 @@
     <string name="tm_title_menu">autthor:Weixin Wang.    version: 1.0</string>
 
     <string name="covid_toast_message">Author: Ziyin Yan.</string>
-
     <string name="btn_to_Covid19Case">Covid-19 Case</string>
     <string name="covid_caseText">Covid-19 Case Data</string>
     <string name="covid_search">Enter a country name and date for searching</string>
@@ -72,7 +71,7 @@
     <string name="covid_search_btn">Search</string>
     <string name="covid_save_btn">Save</string>
     <string name="covid_help_text">Help</string>
-    <string name="covid_help_content">Please input country name and date in YYYY-MM-DD format, then click the search button to get the covid-19 case data based on provinces.</string>
+    <string name="covid_help_content">Please input date in YYYY-MM-DD format, then click the search button to get the covid-19 case data based on provinces.</string>
     <string name="covid_yes">Yes</string>
 
     <string name="covidopen">open</string>
@@ -80,10 +79,8 @@
     <string name="covid_delete_msg">Do you want to delete it?</string>
     <string name="covid_delBtn">Yes</string>
     <string name="covid_undoBtn">No</string>
-    <string name="delDBRec">Confirm the deleteion by clicking yes</string>
+    <string name="delDBRec">Please Confirm it by clicking yes</string>
 
-
-    <!--strings in activity_province_detail.xml-->
     <string name="covid_country">Country: </string>
     <string name="covid_countryCode">Country Code: </string>
     <string name="covid_province">Province: </string>
@@ -92,13 +89,11 @@
     <string name="covid_latitude">Latitude: </string>
     <string name="covid_longitude">Longitude: </string>
 
-    <!--strings in covid_menu.xml-->
     <string name="choice1">Go to Main Page </string>
     <string name="choice2">Records in Database </string>
     <string name="choice3">User Manual </string>
     <string name="choice4">About </string>
 
-    <!--strings in header_covid.xml-->
     <string name="covidtitle">Activity Title: Covid-19 Case Data</string>
     <string name="covidauthor">Author: Ziyin Yan</string>
     <string name="covidversion">Version No.: 1.0 </string>
