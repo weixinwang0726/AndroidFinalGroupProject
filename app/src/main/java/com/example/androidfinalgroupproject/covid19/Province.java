@@ -15,6 +15,10 @@ public class Province {
     public Province() {
     }
 
+    public Province(String province, String casenumber){
+        this.province=province;
+        this.casenumber=casenumber;
+    }
 
     public String getCountryCode() {
         return countrycode;
@@ -64,9 +68,13 @@ public class Province {
         this.longitude = longitude;
     }
 
-    public String getCase() { return casenumber; }
+    public String getCase() {
+        return casenumber;
+    }
 
-    public void setCase(String casenumber) { this.casenumber = casenumber; }
+    public void setCase(String casenumber) {
+        this.casenumber = casenumber;
+    }
 
     public String getDate() {
         return date;
