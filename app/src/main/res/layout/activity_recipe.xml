@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/searchRecipeName"
+        android:text="@string/r_author"
 
         android:textSize="15sp" />
 
@@ -62,9 +62,15 @@
         android:id="@+id/favourite_recipe_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/saveFavRecipe"
+        android:text="@string/r_my_fav_btn"
         android:nextFocusUp="@id/searchRecipe"
-        android:nextFocusDown="@id/RecipeResult"
+        android:nextFocusDown="@id/RecipeResult"/>
+
+        <Button
+            android:id="@+id/recipe_gobacktoStartPage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/r_gobacktoStartpage"
 
         />
 <ListView
