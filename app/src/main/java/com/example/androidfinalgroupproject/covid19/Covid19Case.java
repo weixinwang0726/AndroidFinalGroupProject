@@ -81,7 +81,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_covid19_case);
 
-//        boolean isTablet = findViewById(R.id.covidfragmentLocation) != null;
+        boolean isTablet = findViewById(R.id.covidfragmentLocation) != null;
 
         /*
          set toolbar:
@@ -154,33 +154,24 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         });
 
         /*
-            display province details when select item from viewlist
+            display province details
          */
         provinceListView.setOnItemClickListener((parent, view, position, id) -> {
             Province province = provinceList.get(position);
-//            gotoProvinceDetail.putExtra("Country", province.getCountry());
-//            gotoProvinceDetail.putExtra("CountryCode", province.getCountryCode());
-//            gotoProvinceDetail.putExtra("Province", province.getProvince() );
-//            gotoProvinceDetail.putExtra("Cases", province.getCase());
-//            gotoProvinceDetail.putExtra("Date", province.getDate());
-//            gotoProvinceDetail.putExtra("Lat", province.getLatitude());
-//            gotoProvinceDetail.putExtra("Lon", province.getLongitude());
-//            startActivity(gotoProvinceDetail);
-
             dFragment = new CovidDetailsFragment();
-            Bundle dataToPass = new Bundle();
-            dataToPass.putString("Country", province.getCountry());
-            dataToPass.putString("CountryCode", province.getCountryCode());
-            dataToPass.putString("Province", province.getProvince());
-            dataToPass.putString("Cases", province.getCase());
-            dataToPass.putString("Date", province.getDate());
-            dataToPass.putString("Lat", province.getLatitude());
-            dataToPass.putString("Lon", province.getLongitude());
+            Bundle d = new Bundle();
+            d.putString("Country", province.getCountry());
+            d.putString("CountryCode", province.getCountryCode());
+            d.putString("Province", province.getProvince());
+            d.putString("Cases", province.getCase());
+            d.putString("Date", province.getDate());
+            d.putString("Lat", province.getLatitude());
+            d.putString("Lon", province.getLongitude());
 
             if(isTablet)
            {
 
-                dFragment.setArguments( dataToPass );
+                dFragment.setArguments(d);
                getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.covidfragmentLocation, dFragment) //add fragment to frame layout
@@ -189,7 +180,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
             else
             {
                 Intent nextActivity = new Intent(Covid19Case.this, ProvinceDetailActivity.class);
-                nextActivity.putExtras(dataToPass);
+                nextActivity.putExtras(d);
                 startActivity(nextActivity);
              }
         });
