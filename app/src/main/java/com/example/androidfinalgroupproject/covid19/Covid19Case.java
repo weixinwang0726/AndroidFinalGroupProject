@@ -87,7 +87,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
          set toolbar:
          */
         Toolbar tBar = (Toolbar)findViewById(R.id.covidToolBar);
-
+        setSupportActionBar(tBar);
         /*
          navigation view:
          */
@@ -148,9 +148,9 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         saveBtn.setOnClickListener(click -> {
             String message = null;
             saveData(provinceList);
-            message = "Save search results to Database";
+            message = "Save search results";
             Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-            loadDataFromDatabase();
+           // loadDataFromDatabase();
         });
 
         /*
@@ -174,7 +174,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
                 dFragment.setArguments(d);
                getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.covidfragmentLocation, dFragment) //add fragment to frame layout
+                        .replace(R.id.covidfragmentLocation, dFragment)
                         .commit();
            }
             else
@@ -271,7 +271,17 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
                 startActivity(new Intent(Covid19Case.this, AudioMainActivity.class));
                 message = "Go to Audio Page";
                 break;
+            case R.id.item4:
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
+                alertDialogBuilder.setTitle(R.string.covid_help_text)
+                        .setMessage(R.string.covid_help_content)
+                        .setPositiveButton(R.string.covid_yes, (c, arg) -> {
+
+                        })
+                        .create().show();
+                message = "Show help";
+                break;
         }
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         return true;
