@@ -192,14 +192,10 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         //delete from database for long clicking item: use for loop to delete?
         databaseListView.setOnItemLongClickListener( (p, b, pos, id) -> {
             androidx.appcompat.app.AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            //final int positionToRemove = pos;
             Database selectedRec = databaseList.get(pos);
             alertDialogBuilder.setTitle(R.string.covid_delete_msg)
-                    //display messages
                     .setMessage( getString(R.string.delDBRec))
-                    //The database ID is:"+id)
 
-                    //action of Yes button
                     .setPositiveButton(R.string.covid_delBtn, (click, arg) -> {
                         deleteData(selectedRec);
                         Log.e("delete:",""+ selectedRec.getId() );
@@ -397,7 +393,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         {
             String country = results.getString(countryColumnIndex);
             String date = results.getString(dateColumnIndex);
-            dbResults.add( new Database( country, date ) );
+            dbResults.add( new Database( country, date ));
         }
 
         databaseList.addAll( dbResults );

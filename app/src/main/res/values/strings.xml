@@ -77,6 +77,11 @@
 
     <string name="covidopen">open</string>
     <string name="covidclose">close</string>
+    <string name="covid_delete_msg">Do you want to delete it?</string>
+    <string name="covid_delBtn">Yes</string>
+    <string name="covid_undoBtn">No</string>
+    <string name="delDBRec">Confirm the deleteion by clicking yes</string>
+
 
     <!--strings in activity_province_detail.xml-->
     <string name="covid_country">Country: </string>

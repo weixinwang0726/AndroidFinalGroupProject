@@ -10,6 +10,12 @@ public class Database {
     public Database() {
     }
 
+    public Database( String country, String date )
+    {
+        this.country = country;
+        this.date = date;
+    }
+
     public Database( String country, String date, String province, String covidcase ) {
         this.country = country;
         this.date = date;
