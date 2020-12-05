@@ -94,7 +94,7 @@
     <string name="choice1">Go to Main Page </string>
     <string name="choice2">Records in Database </string>
     <string name="choice3">User Manual </string>
-    <string name="choice4">About </string>
+    <string name="choice4">Help</string>
 
     <string name="covidtitle">Activity Title: Covid-19 Case Data</string>
     <string name="covidauthor">Author: Ziyin Yan</string>

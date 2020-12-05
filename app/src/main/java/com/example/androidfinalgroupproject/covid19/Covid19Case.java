@@ -239,8 +239,8 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         Date d2 = c.getTime();
         String datePlusOne = df.format(d2);
 
-        String url = String.format("https://api.covid19api.com/country/%s/status/confirmed/live?from=%sT00:00:00Z&to=%sT00:00:00Z", country, date, datePlusOne);
-
+        String url = String.format("https://api.covid19api.com/country/%s/status/confirmed/live?from=%sT00:00:00Z&to=%sT23:59:59Z", country, date, date);
+        //String url = String.format("https://api.covid19api.com/country/%s/status/confirmed/live?from=%sT00:00:00Z&to=%sT00:00:00Z", country, date, datePlusOne);
         provincesQuery.execute(url);
     }
 
@@ -333,8 +333,9 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
     private void saveData( List<Province> resultList )
     {
         ProvinceOpener provinceOpener = new ProvinceOpener(this);
-        db = provinceOpener.getWritableDatabase();
 
+        db = provinceOpener.getWritableDatabase();
+        //provinceOpener.onDowngrade(db,1,1);
         for (Province result : resultList)
         {
             //add to the database

@@ -4,19 +4,19 @@
 
     <item android:id="@+id/item1"
         android:title="@string/choice1"
-        android:icon="@drawable/mainpage"
+        android:icon="@drawable/ticket_master"
         android:orderInCategory="25"
         app:showAsAction="always"/> <!--go to main page-->
 
     <item android:id="@+id/item2"
         android:title="@string/choice2"
         android:orderInCategory="50"
-        android:icon="@drawable/database"
+        android:icon="@drawable/recipeicon"
         app:showAsAction="always" /> <!--records saved in Database-->
 
     <item android:id="@+id/item3"
         android:title="@string/choice3"
-        android:icon="@drawable/usermanual"
+        android:icon="@drawable/music"
         app:showAsAction="always"
         android:orderInCategory="75"/> <!--help to pop alterdialog for instruction-->
 
