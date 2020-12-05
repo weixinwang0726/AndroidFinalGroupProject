@@ -103,7 +103,7 @@
     <string name="choice1">转到主页 </string>
     <string name="choice2">数据库记录 </string>
     <string name="choice3">用户手册 </string>
-    <string name="choice4">关于 </string>
+    <string name="choice4">帮助</string>
 
     <!--strings in header_covid.xml-->
     <string name="covidtitle">标题：Covid-19案例数据</string>
