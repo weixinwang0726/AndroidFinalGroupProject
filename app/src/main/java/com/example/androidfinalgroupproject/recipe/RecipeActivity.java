@@ -15,8 +15,12 @@ import com.example.androidfinalgroupproject.R;
 import com.google.android.material.navigation.NavigationView;
 
 public class RecipeActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
+
+
     SharedPreferences prefs;
     EditText RecipeKeyword;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
