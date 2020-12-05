@@ -4,9 +4,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
+    android:descendantFocusability="blocksDescendants"
 
     >
-
     <ImageView
         android:id="@+id/tm_image_star"
         android:layout_width="30dp"
@@ -28,6 +28,7 @@
         android:text="@string/tm_city_title"
         android:textSize="20dp"
         android:focusable="false"
+
         android:textColor="#FFFFFF"/>
 
     </LinearLayout>

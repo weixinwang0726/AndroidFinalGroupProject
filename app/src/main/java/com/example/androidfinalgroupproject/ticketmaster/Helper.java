@@ -2,6 +2,7 @@ package com.example.androidfinalgroupproject.ticketmaster;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 
 import com.example.androidfinalgroupproject.common.Const;
 
@@ -40,6 +41,21 @@ public class Helper {
     }
 
     /**
+     * save event data to save.
+     * @param dataToPass
+     * @param event
+     */
+    public void saveEventToBundle(Bundle dataToPass, Event event) {
+
+        dataToPass.putString(Const.PARAMS_TM_EVENT_ID, event.getEventId());
+        dataToPass.putString(Const.PARAMS_TM_NAME, event.getName());
+        dataToPass.putString(Const.PARAMS_TM_START_DATE, event.getStartDate());
+        dataToPass.putDouble(Const.PARAMS_TM_PRICE_MIN, event.getPriceMin());
+        dataToPass.putDouble(Const.PARAMS_TM_PRICE_MAX, event.getPriceMax());
+        dataToPass.putString(Const.PARAMS_TM_URL, event.getUrl());
+        dataToPass.putString(Const.PARAMS_TM_IMAGE_URL, event.getImageUrl());
+    }
+    /**
      * use the params to create a new event.
      * @param e
      * @param fromIntent
@@ -55,5 +71,6 @@ public class Helper {
         e.setImageUrl(fromIntent.getStringExtra(Const.PARAMS_TM_IMAGE_URL));
         return e;
     }
+
 
 }

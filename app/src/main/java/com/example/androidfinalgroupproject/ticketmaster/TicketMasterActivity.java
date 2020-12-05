@@ -63,7 +63,7 @@ public class TicketMasterActivity extends AppCompatActivity implements Navigatio
     EventOpener eventOpener;
     SQLiteDatabase db;
     private Helper tmHelper = new Helper();
-
+    DetailsFragment dFragment ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +78,7 @@ public class TicketMasterActivity extends AppCompatActivity implements Navigatio
                 drawer, myToolbar, R.string.open, R.string.close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
+        boolean isTablet =    findViewById(R.id.fragmentLocation) != null;
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
@@ -96,9 +96,9 @@ public class TicketMasterActivity extends AppCompatActivity implements Navigatio
         ListView cityListView = findViewById(R.id.event_list_view);
         cityListView.setAdapter(citiesAdapter = new EventsAdapter());
 
-        Button helpBtn = findViewById(R.id.help_btn);
+        Button helpBtn = navigationView.getHeaderView(0).findViewById(R.id.help_btn);
         helpBtn.setOnClickListener(click -> {
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(navigationView.getContext());
 
             alertDialogBuilder.setTitle(R.string.tm_help_btn)
                     .setMessage(R.string.tm_help_content)
@@ -116,6 +116,10 @@ public class TicketMasterActivity extends AppCompatActivity implements Navigatio
         //gotoFavoriteList = new Intent(TicketMasterActivity.this, FavoriteCitiesActivity.class);
         Button gotoFavoriteBtn = findViewById(R.id.favorite_btn);
         gotoFavoriteBtn.setOnClickListener(click -> {
+            if(isTablet){
+                if(null != dFragment)
+                getSupportFragmentManager().beginTransaction().remove(dFragment).commit();
+            }
             //startActivity(gotoFavoriteList);
             loadEventList("", "radius",true);
         });
@@ -124,18 +128,40 @@ public class TicketMasterActivity extends AppCompatActivity implements Navigatio
 
         Button searchBtn = findViewById(R.id.search_btn);
         searchBtn.setOnClickListener(click -> {
-            String city = cityInput.getText().toString();
-            String radius = radiusInput.getText().toString();
-            tmHelper.saveArguments(prefs,city, radius);
-            loadEventList(city, radius,false);
+            if(isTablet){
+                if(null != dFragment)
+                    getSupportFragmentManager().beginTransaction().remove(dFragment).commit();
+            }
+                String city = cityInput.getText().toString();
+                String radius = radiusInput.getText().toString();
+                tmHelper.saveArguments(prefs, city, radius);
+                loadEventList(city, radius, false);
+
 
         });
 
         //Click the event's name and see the detail of the event.
         cityListView.setOnItemClickListener((parent, view, position, id) -> {
-            Event event = eventList.get(position);
-            tmHelper.saveEventToExtra(gotoEventDetail,event);
-            startActivity(gotoEventDetail);
+                    Event event = eventList.get(position);
+                    dFragment = new DetailsFragment();
+                    Bundle dataToPass = new Bundle();
+
+                    if(isTablet)
+                    {
+                        tmHelper.saveEventToBundle(dataToPass,event);
+                        //cityListView.setVisibility(View.INVISIBLE);
+                        //add a DetailFragment
+                        dFragment.setArguments( dataToPass ); //pass it a bundle for information
+                        //  dFragment.setTablet(true);
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.fragmentLocation, dFragment) //Add the fragment in FrameLayout
+                                //   .addToBackStack("AnyName")
+                                .commit(); //actually load the fragment.
+                    }else {
+                        tmHelper.saveEventToExtra(gotoEventDetail, event);
+                        startActivity(gotoEventDetail);
+                    }
         });
     }
 
@@ -219,11 +245,11 @@ public class TicketMasterActivity extends AppCompatActivity implements Navigatio
             }
 
             nameView.setText(event.getName());
-            nameView.setOnClickListener(click->{
-                tmHelper.saveEventToExtra(gotoEventDetail,event);
-                startActivity(gotoEventDetail); }
-
-            );
+//            nameView.setOnClickListener(click->{
+//                tmHelper.saveEventToExtra(gotoEventDetail,event);
+//                startActivity(gotoEventDetail); }
+//
+//            );
             deleteButton.setOnClickListener(click->{
                 db.delete(Const.TABLE_NAME_TM,EventOpener.COL_EVENT_ID+" =? ",new String[]{event.getEventId()});
 
