@@ -6,7 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical">
-
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        />
     <TextView
 
         android:id="@+id/recipe_header"
@@ -64,7 +69,7 @@
         android:layout_height="wrap_content"
         android:text="@string/r_my_fav_btn"
         android:nextFocusUp="@id/searchRecipe"
-        android:nextFocusDown="@id/RecipeResult"/>
+       />
 
         <Button
             android:id="@+id/recipe_gobacktoStartPage"
@@ -73,10 +78,16 @@
             android:text="@string/r_gobacktoStartpage"
 
         />
+
+
+    <!--
 <ListView
     android:id="@+id/RecipeResult"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
     />
+    -->
+
+
 </LinearLayout>
