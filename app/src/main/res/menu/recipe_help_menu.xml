@@ -5,12 +5,12 @@
 
     <item android:id="@+id/recipe_help"
         android:title="@string/r_help"
-        android:icon="@drawable/recipe_Help"
+
         android:orderInCategory="25"
         app:showAsAction="always"/>
 
 
-    <item android:id="@+id/r_menu_item2"
+    <item android:id="@+id/r_menu_fav_btn"
         android:title="@string/saveFavRecipe"
         android:orderInCategory="50"
         android:icon="@drawable/recipe_fav"
