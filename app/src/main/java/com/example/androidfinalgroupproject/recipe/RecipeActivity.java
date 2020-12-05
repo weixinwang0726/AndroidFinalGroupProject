@@ -13,7 +13,11 @@ import android.widget.EditText;
 
 import com.example.androidfinalgroupproject.R;
 import com.google.android.material.navigation.NavigationView;
-
+/**
+ * @Author: Jingshan Guan
+ * @Date: 2020/12/03
+ * @Version: 1.0
+ */
 public class RecipeActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
 
 

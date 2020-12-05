@@ -11,7 +11,10 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:background="@color/colorPrimary"
+        app:title="Recipe Search"
         />
+
+
     <TextView
 
         android:id="@+id/recipe_header"
