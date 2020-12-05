@@ -8,7 +8,7 @@
     android:orientation="horizontal"
     android:weightSum="3">
 
-    <!--database record, show after clicking navigation item "record in Database"-->
+
     <TextView
         android:id="@+id/country_name_text_view"
         android:layout_width="wrap_content"

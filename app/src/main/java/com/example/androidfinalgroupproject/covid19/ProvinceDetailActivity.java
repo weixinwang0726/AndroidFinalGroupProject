@@ -1,7 +1,6 @@
 package com.example.androidfinalgroupproject.covid19;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -14,17 +13,16 @@ import android.widget.Toast;
 
 import com.example.androidfinalgroupproject.R;
 
-
 public class ProvinceDetailActivity extends AppCompatActivity {
 
-    String latitude;
-    String longitude;
     String country;
     String countryCode;
+    String latitude;
+    String longitude;
     String provinceName;
     String caseNumber;
-    String date;
     long id;
+    String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +30,15 @@ public class ProvinceDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_province_detail);
 
         Intent fromIntent = getIntent();
-        latitude = fromIntent.getStringExtra("Lat");
-        longitude = fromIntent.getStringExtra("Lon");
         country = fromIntent.getStringExtra("Country");
         provinceName = fromIntent.getStringExtra("Province");
+        latitude = fromIntent.getStringExtra("Lat");
+        longitude = fromIntent.getStringExtra("Lon");
         countryCode = fromIntent.getStringExtra("CountryCode");
+        id = fromIntent.getLongExtra("id", -1);
         caseNumber = fromIntent.getStringExtra("Cases");
         date = fromIntent.getStringExtra("Date");
-        id = fromIntent.getLongExtra("id", -1);
+
 
         TextView countryTextView = findViewById(R.id.country_text_view);
         TextView countryCodeTextView = findViewById(R.id.countrycode_text_view);
@@ -51,11 +50,11 @@ public class ProvinceDetailActivity extends AppCompatActivity {
 
         countryTextView.setText(country);
         countryCodeTextView.setText(countryCode);
-        provinceTextView.setText(provinceName);
-        caseTextView.setText(caseNumber);
         dateTextView.setText(date);
         latitudeTextView.setText(latitude);
         longitudeTextView.setText(longitude);
+        provinceTextView.setText(provinceName);
+        caseTextView.setText(caseNumber);
 
     }
 }

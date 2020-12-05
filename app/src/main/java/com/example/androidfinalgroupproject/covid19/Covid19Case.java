@@ -29,6 +29,9 @@ import android.widget.Toast;
 
 import com.example.androidfinalgroupproject.MainActivity;
 import com.example.androidfinalgroupproject.R;
+import com.example.androidfinalgroupproject.audio.AudioMainActivity;
+import com.example.androidfinalgroupproject.recipe.RecipeActivity;
+import com.example.androidfinalgroupproject.ticketmaster.TicketMasterActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
@@ -78,16 +81,15 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_covid19_case);
 
-//        boolean isTablet = findViewById(R.id.covidfragmentLocation) != null;
+        boolean isTablet = findViewById(R.id.covidfragmentLocation) != null;
 
         /*
-        put and set toolbar:
+         set toolbar:
          */
-        //This gets the toolbar from the layout:
         Toolbar tBar = (Toolbar)findViewById(R.id.covidToolBar);
-
+        setSupportActionBar(tBar);
         /*
-        put navigation view:
+         navigation view:
          */
         DrawerLayout drawer = findViewById(R.id.covid_drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
@@ -125,10 +127,12 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         gotoProvinceDetail = new Intent(Covid19Case.this, ProvinceDetailActivity.class);
 
         /*
-        add and display progress bar
+        progress bar
          */
         progressBar = findViewById(R.id.progress_horizontal);
-        //function of search button
+        /*
+        search button
+         */
         Button searchBtn = findViewById(R.id.search_btn);
         searchBtn.setOnClickListener(click -> {
             String countryIn = countryInput.getText().toString();
@@ -137,59 +141,72 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
             loadProvinceList(countryIn, dateIn);
         });
 
-        //function of save button
+        /*
+         save button
+         */
         Button saveBtn = findViewById(R.id.save_btn);
         saveBtn.setOnClickListener(click -> {
             String message = null;
             saveData(provinceList);
-            message = "Save search results to Database";
+            message = "Save search results";
             Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-            loadDataFromDatabase();
+           // loadDataFromDatabase();
         });
 
         /*
-            display province details when select item from viewlist
+            display province details
          */
         provinceListView.setOnItemClickListener((parent, view, position, id) -> {
             Province province = provinceList.get(position);
-//            gotoProvinceDetail.putExtra("Country", province.getCountry());
-//            gotoProvinceDetail.putExtra("CountryCode", province.getCountryCode());
-//            gotoProvinceDetail.putExtra("Province", province.getProvince() );
-//            gotoProvinceDetail.putExtra("Cases", province.getCase());
-//            gotoProvinceDetail.putExtra("Date", province.getDate());
-//            gotoProvinceDetail.putExtra("Lat", province.getLatitude());
-//            gotoProvinceDetail.putExtra("Lon", province.getLongitude());
-//            startActivity(gotoProvinceDetail);
-
-            //Nov 30, comment line 153-160, write line 164-189
-            //create a bundle to pass data to the new fragment
             dFragment = new CovidDetailsFragment();
-            Bundle dataToPass = new Bundle();
-            dataToPass.putString("Country", province.getCountry());
-            dataToPass.putString("CountryCode", province.getCountryCode());
-            dataToPass.putString("Province", province.getProvince());
-            dataToPass.putString("Cases", province.getCase());
-            dataToPass.putString("Date", province.getDate());
-            dataToPass.putString("Lat", province.getLatitude());
-            dataToPass.putString("Lon", province.getLongitude());
+            Bundle d = new Bundle();
+            d.putString("Country", province.getCountry());
+            d.putString("CountryCode", province.getCountryCode());
+            d.putString("Province", province.getProvince());
+            d.putString("Cases", province.getCase());
+            d.putString("Date", province.getDate());
+            d.putString("Lat", province.getLatitude());
+            d.putString("Lon", province.getLongitude());
 
-//            if(isTablet)
-//            {
-//                //add a CovidDetialsFragment
-//                dFragment.setArguments( dataToPass ); //pass it a bundle for information
-//                getSupportFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.covidfragmentLocation, dFragment) //add fragment to frame layout
-//                        .commit(); //load the fragment
-//            }
-//            else //is phone
-//            {
+            if(isTablet)
+           {
+
+                dFragment.setArguments(d);
+               getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.covidfragmentLocation, dFragment)
+                        .commit();
+           }
+            else
+            {
                 Intent nextActivity = new Intent(Covid19Case.this, ProvinceDetailActivity.class);
-                nextActivity.putExtras(dataToPass); //send data to next activity
-                startActivity(nextActivity); //make the transition
-//            }
+                nextActivity.putExtras(d);
+                startActivity(nextActivity);
+             }
         });
 
+        databaseListView.setOnItemClickListener((parent, view, position, id) -> {
+            getAllDataFromDatabase(databaseList.get(position));
+        });
+
+        //delete from database for long clicking item: use for loop to delete?
+        databaseListView.setOnItemLongClickListener( (p, b, pos, id) -> {
+            androidx.appcompat.app.AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            Database selectedRec = databaseList.get(pos);
+            alertDialogBuilder.setTitle(R.string.covid_delete_msg)
+                    .setMessage( getString(R.string.delDBRec))
+
+                    .setPositiveButton(R.string.covid_delBtn, (click, arg) -> {
+                        deleteData(selectedRec);
+                        Log.e("delete:",""+ selectedRec.getId() );
+                        databaseList.remove(pos);
+                        databaseListAdapter.notifyDataSetChanged();
+                    })
+                    //action of No button
+                    .setNegativeButton(R.string.covid_undoBtn, (click, arg) -> { })
+                    .create().show();
+            return false; //change from true to false
+        });
     }
 
     private void saveArguments(String country, String date) {
@@ -205,8 +222,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
     private void loadProvinceList(String country, String date) {
         provinceList.clear();
         progressBar.setVisibility(View.VISIBLE);
-//        provinceListView.setVisibility( View.VISIBLE );
-//        databaseListView.setVisibility( View.INVISIBLE );
+
         ProvincesQuery provincesQuery = new ProvincesQuery();
 
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -223,8 +239,8 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         Date d2 = c.getTime();
         String datePlusOne = df.format(d2);
 
-        String url = String.format("https://api.covid19api.com/country/%s/status/confirmed/live?from=%sT00:00:00Z&to=%sT00:00:00Z", country, date, datePlusOne);
-
+        String url = String.format("https://api.covid19api.com/country/%s/status/confirmed/live?from=%sT00:00:00Z&to=%sT23:59:59Z", country, date, date);
+        //String url = String.format("https://api.covid19api.com/country/%s/status/confirmed/live?from=%sT00:00:00Z&to=%sT00:00:00Z", country, date, datePlusOne);
         provincesQuery.execute(url);
     }
 
@@ -241,19 +257,21 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         String message = null;
-        //Look at your menu XML file. Put a case for every id in that file:
         switch(item.getItemId())
         {
-            //what to do when the menu item is selected:
-            case R.id.item1: //Go to Main page
-                startActivity(new Intent(Covid19Case.this, MainActivity.class));
-                message = "Go to Main Page";
+            case R.id.item1:
+                startActivity(new Intent(Covid19Case.this, TicketMasterActivity.class));
+                message = "Go to TicketMaster Page";
                 break;
-            case R.id.item2: //show saved results in database
-                //call loadDataFromDatabase()
-                message = "Show records saved in database";
+            case R.id.item2:
+                startActivity(new Intent(Covid19Case.this, RecipeActivity.class));
+                message = "Go to Recipe Page";
                 break;
-            case R.id.item3: //show user manual
+            case R.id.item3:
+                startActivity(new Intent(Covid19Case.this, AudioMainActivity.class));
+                message = "Go to Audio Page";
+                break;
+            case R.id.item4:
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
                 alertDialogBuilder.setTitle(R.string.covid_help_text)
@@ -262,18 +280,14 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
 
                         })
                         .create().show();
-                message = "show user manual";
+                message = "Show help";
                 break;
-            case R.id.item4: //about the covid19 topic
-                message = "Covid-19 case data writen by Ivy Xue";
-                break;
-
         }
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         return true;
     }
 
-    /* Needed for
+    /*
      *the OnNavigationItemSelected interface
      */
     @Override
@@ -289,7 +303,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
             case R.id.item2:
                 //show saved records in Database: country and date
                 loadDataFromDatabase();
-                message = "Show saved records in Database";
+                message = "Show Database";
                 break;
             case R.id.item3:
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -300,10 +314,10 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
 
                         })
                         .create().show();
-                message = "Show User Manual";
+                message = "Show help";
                 break;
             case R.id.item4:
-                message = "Covid-19 activity written by Ivy Xue";
+                message = "Covid-19 activity written by Ziyin Yan";
                 break;
 
         }
@@ -319,59 +333,80 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
     private void saveData( List<Province> resultList )
     {
         ProvinceOpener provinceOpener = new ProvinceOpener(this);
-        db = provinceOpener.getWritableDatabase();
 
+        db = provinceOpener.getWritableDatabase();
+        //provinceOpener.onDowngrade(db,1,1);
         for (Province result : resultList)
         {
-            //add to the database and get the new ID
+            //add to the database
             ContentValues newRowValues = new ContentValues();
-
-            //Now provide a value for every database column defined in ProvinceOpener.java:
-            //put string country in the COUNTRY column:
+            //add COUNTRY column:
             newRowValues.put( ProvinceOpener.COL_COUNTRY, result.getCountry() );
-            //put string date in the DATE column:
+            //add DATE column:
             newRowValues.put( ProvinceOpener.COL_DATE, result.getDate() );
-            //put string province in the PROVINCE column:
+            //add PROVINCE column:
             newRowValues.put( ProvinceOpener.COL_PROVINCE, result.getProvince() );
-            //put string case in the CASE column:
+            //add CASE column:
             newRowValues.put( ProvinceOpener.COL_CASE, result.getCase() );
 
-            //Now insert in the database:
+            //insert into the database:
             long newId = db.insert( ProvinceOpener.TABLE_NAME, null, newRowValues );
         }
     }
     /*
-     * load country & date from Database, show in listview
+     * delete record in database
+     */
+    private void deleteData(Database i){
+        db.delete( ProvinceOpener.TABLE_NAME, ProvinceOpener.COL_COUNTRY + "= ? and " + ProvinceOpener.COL_DATE + "= ?", new String[] {i.getCountry(), i.getDate()} );
+    }
+
+    /*
+     * load record from Database
+     */
+    private void getAllDataFromDatabase(Database database){
+        provinceList.clear();
+        ProvinceOpener dbOpener = new ProvinceOpener(this);
+        db = dbOpener.getWritableDatabase();
+        String [] columns = {ProvinceOpener.COL_COUNTRY, ProvinceOpener.COL_DATE, ProvinceOpener.COL_PROVINCE, ProvinceOpener.COL_CASE};
+        String[] args = {database.getCountry(), database.getDate()};
+        Cursor results = db.query(false, ProvinceOpener.TABLE_NAME, columns, ProvinceOpener.COL_COUNTRY + "=?" + " and "  +
+                ProvinceOpener.COL_DATE + "=?", args,null, null, null, null);
+        int provincesColumnIndex = results.getColumnIndex(ProvinceOpener.COL_PROVINCE);
+        int caseColumnIndex = results.getColumnIndex(ProvinceOpener.COL_CASE);
+        while(results.moveToNext())
+        {
+            String provinces= results.getString(provincesColumnIndex);
+            String cases=results.getString(caseColumnIndex);
+            provinceList.add(new Province(provinces, cases));
+        }
+        provinceListAdapter.notifyDataSetChanged();
+    }
+
+
+    /*
+     * load Database
      */
     private void loadDataFromDatabase()
     {
         databaseList.clear();
-        //get a database connection:
         ProvinceOpener dbOpener = new ProvinceOpener(this);
         db = dbOpener.getWritableDatabase();
 
-        // We want to get distincet country column and date column.
         String [] columns = {ProvinceOpener.COL_COUNTRY, ProvinceOpener.COL_DATE};
-        //query country and date from the database:
+        //list country and date from the database:
         Cursor results = db.query(true, ProvinceOpener.TABLE_NAME, new String[]{"COUNTRY", "DATE"}, "COUNTRY not null and DATE not null", null,null, null, null, null);
 
-        //Now the results object has rows of results that match the query.
-        //find the column indices:
         int countryColumnIndex = results.getColumnIndex(ProvinceOpener.COL_COUNTRY);
         int dateColumnIndex = results.getColumnIndex(ProvinceOpener.COL_DATE);
 
         List<Database> dbResults = new ArrayList<Database>();
-        //iterate over the results, return true if there is a next item:
         while(results.moveToNext())
         {
             String country = results.getString(countryColumnIndex);
             String date = results.getString(dateColumnIndex);
-            //add the new Contact to the array list:
-            dbResults.add( new Database( country, date ) );
+            dbResults.add( new Database( country, date ));
         }
 
-//        provinceListView.setVisibility( View.INVISIBLE );
-//        databaseListView.setVisibility( View.VISIBLE );
         databaseList.addAll( dbResults );
         if( databaseList.size() > 0 )
         {
@@ -401,8 +436,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
             Database databaseRec = (Database) getItem(position);
             LayoutInflater inflater = getLayoutInflater();
 
-            //make a new row
-            View rowView = inflater.inflate(R.layout.row_countrydate_layout, parent, false);
+             View rowView = inflater.inflate(R.layout.row_countrydate_layout, parent, false);
 
             TextView countryView = rowView.findViewById( R.id.country_name_text_view);
             countryView.setText(databaseRec.getCountry());
@@ -454,25 +488,22 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
 
         private List<Province> provinceResults = new ArrayList();
 
-        /**
-         * @param args
-         * @return
-         */
+
         @Override
         protected String doInBackground(String... args) {
 
             try {
-                //create a URL object of what server to contact:
+                //create a URL object
                 URL url = new URL(args[0]);
 
-                //open the connection
+                //open connection
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
                 //wait for data:
                 InputStream response = urlConnection.getInputStream();
 
 
-                //Build the entire string response:
+                //Build response:
                 BufferedReader reader = new BufferedReader(new InputStreamReader(response, "UTF-8"), 8);
                 StringBuilder sb = new StringBuilder();
 
@@ -483,7 +514,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
                 String result = sb.toString(); //result is the whole string
 
 
-                // convert string to JSON: Look at slide 27:
+                // convert string to JSON
                 JSONArray provinceJSONArray = new JSONArray(result);
                 JSONObject provinceJSONObject = new JSONObject();
 

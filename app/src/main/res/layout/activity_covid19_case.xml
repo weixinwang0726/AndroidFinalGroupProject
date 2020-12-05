@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,8 +12,7 @@
         android:id="@+id/covidToolBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="@string/covid_caseText"
-        android:background="@color/colorAccent" />
+        app:title="@string/covid_caseText" />
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/covid_drawer_layout"
@@ -40,8 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/covid_caseText"
-                android:textColor="#FFFFFF"
-                android:textSize="20dp" />
+                android:textSize="18dp" />
 
 
             <TextView
@@ -49,8 +47,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/covid_search"
-                android:textColor="#FFFFFF"
-                android:textSize="20dp" />
+
+                android:textSize="18dp" />
 
 
             <LinearLayout
@@ -65,19 +63,16 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:backgroundTint="@android:color/white"
-                    android:hint="@string/covid_country_hint"
-                    android:textColor="#FAFDFD"
-                    android:textColorHint="#FAFDFD" />
+                    android:hint="@string/covid_country_hint" />
 
                 <EditText
                     android:id="@+id/date_input"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
+                    android:gravity="center"
                     android:backgroundTint="@android:color/white"
-                    android:hint="@string/covid_date_hint"
-                    android:textColor="#FAFDFD"
-                    android:textColorHint="#FAFDFD" />
+                    android:hint="@string/covid_date_hint" />
 
             </LinearLayout>
 
@@ -85,7 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:weightSum="2">
 
                 <Button
                     android:id="@+id/search_btn"
@@ -135,5 +130,5 @@
         </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>
 
