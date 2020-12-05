@@ -87,11 +87,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/tm_favo_list_btn" />
 
-                <Button
-                    android:id="@+id/help_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tm_help_btn" />
+
 
             </LinearLayout>
 
@@ -111,7 +107,9 @@
             android:background="#303F9F"
             android:fitsSystemWindows="true"
             app:headerLayout="@layout/tm_header"
+
             app:itemTextColor="#FFFFFF"
             app:menu="@menu/main_toolbar" />
+
     </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>
