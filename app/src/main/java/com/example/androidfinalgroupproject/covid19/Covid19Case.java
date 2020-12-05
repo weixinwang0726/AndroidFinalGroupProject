@@ -232,6 +232,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         } catch (ParseException e) {
             e.printStackTrace();
             d1 = Calendar.getInstance().getTime();
+
         }
         Calendar c = Calendar.getInstance();
         c.setTime(d1);
@@ -239,7 +240,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         Date d2 = c.getTime();
         String datePlusOne = df.format(d2);
 
-        String url = String.format("https://api.covid19api.com/country/%s/status/confirmed/live?from=%sT00:00:00Z&to=%sT23:59:59Z", country, date, date);
+        String url = String.format("https://api.covid19api.com/country/%s/status/confirmed/live?from=%sT00:00:00Z&to=%sT23:59:59Z", country, date,date);
         //String url = String.format("https://api.covid19api.com/country/%s/status/confirmed/live?from=%sT00:00:00Z&to=%sT00:00:00Z", country, date, datePlusOne);
         provincesQuery.execute(url);
     }

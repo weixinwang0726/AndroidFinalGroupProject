@@ -32,40 +32,40 @@ public class RecipeActivity extends AppCompatActivity  implements NavigationView
         String keyword= prefs.getString(key, ""); ;
 
         // push reserved email to edit control
-        searfindViewById(R.id.editTextEmail);
-        editEmail.setText(email);
+//        searfindViewById(R.id.editTextEmail);
+//        editEmail.setText(email);
 
-        Button btnLogin = findViewById(R.id.login);
-
-        btnLogin.setOnClickListener( v -> {
-            Intent profilePage = new Intent(MainActivity.this, ProfileActivity.class);
-
-
-            // get email user typed
-            String emailTyped = editEmail.getText().toString();
-            profilePage.putExtra(getString(R.string.youremail), emailTyped);
-
-            startActivity(profilePage);
-        });
-
-
-        Button weatherButton= findViewById(R.id.weatherbutton);
-        weatherButton.setOnClickListener(v -> {
-            Intent weatherPage = new Intent(MainActivity.this,WeatherForecast.class);
-
-            startActivity(weatherPage);
-        });
+//        Button btnLogin = findViewById(R.id.login);
+//
+//        btnLogin.setOnClickListener( v -> {
+//            Intent profilePage = new Intent(MainActivity.this, ProfileActivity.class);
+//
+//
+//            // get email user typed
+//            String emailTyped = editEmail.getText().toString();
+//            profilePage.putExtra(getString(R.string.youremail), emailTyped);
+//
+//            startActivity(profilePage);
+//        });
+//
+//
+//        Button weatherButton= findViewById(R.id.weatherbutton);
+//        weatherButton.setOnClickListener(v -> {
+//            Intent weatherPage = new Intent(MainActivity.this,WeatherForecast.class);
+//
+//            startActivity(weatherPage);
+//        });
     }
 
     @Override
     protected void onPause() {
         super.onPause();
 
-        SharedPreferences.Editor editor  = prefs.edit();
-        String key = getString(R.string.youremail);
-        String emailtyped = editEmail.getText().toString();
-        editor.putString(key, emailtyped);
-        editor.commit();
+//        SharedPreferences.Editor editor  = prefs.edit();
+//        String key = getString(R.string.youremail);
+//        String emailtyped = editEmail.getText().toString();
+//        editor.putString(key, emailtyped);
+//        editor.commit();
 
     }
 
