@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -21,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -33,6 +35,7 @@ import com.example.androidfinalgroupproject.audio.AudioMainActivity;
 import com.example.androidfinalgroupproject.recipe.RecipeActivity;
 import com.example.androidfinalgroupproject.ticketmaster.TicketMasterActivity;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -133,25 +136,49 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         /*
         search button
          */
+        @SuppressLint("UseSwitchCompatOrMaterialCode")
+        CheckBox saveBtn = findViewById(R.id.save_btn);
         Button searchBtn = findViewById(R.id.search_btn);
         searchBtn.setOnClickListener(click -> {
             String countryIn = countryInput.getText().toString();
             String dateIn = dateInput.getText().toString();
             saveArguments(countryIn, dateIn);
             loadProvinceList(countryIn, dateIn);
+            saveBtn.setChecked(false);
         });
 
         /*
          save button
          */
-        Button saveBtn = findViewById(R.id.save_btn);
-        saveBtn.setOnClickListener(click -> {
-            String message = null;
-            saveData(provinceList);
-            message = "Save search results";
-            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+       // Button saveBtn = findViewById(R.id.save_btn);
+        //saveBtn.setOnClickListener(click -> {
+           // String message = null;
+            //saveData(provinceList);
+           // message = "Save search results";
+            //Toast.makeText(this, message, Toast.LENGTH_LONG).show();
            // loadDataFromDatabase();
-        });
+
+
+
+        //@SuppressLint("UseSwitchCompatOrMaterialCode")
+        //CheckBox saveBtn = findViewById(R.id.save_btn);
+        saveBtn.setOnCheckedChangeListener((cb,b)-> {
+                    if (b) {
+                        Snackbar.make(saveBtn, getResources().getString(R.string.covid_switch_message),
+                                Snackbar.LENGTH_LONG).setAction(getResources().getString(R.string.covid_undo),
+                                click -> cb.setChecked(!b)).show();
+                        boolean saveBtnState = saveBtn.isChecked();
+                        if (saveBtnState) {
+                            saveData(provinceList);
+                        }
+                        // else {
+                        //Snackbar.make(saveBtn, getResources().getString(R.string.switch_message1), Snackbar.LENGTH_LONG).setAction(getResources().getString(R.string.undo),
+                        //       click -> cb.setChecked(!b)).show();
+                        //    }
+                        //loadDataFromDatabase();
+                        // });
+                    }
+                });
 
         /*
             display province details
@@ -191,7 +218,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
 
         //delete from database for long clicking item: use for loop to delete?
         databaseListView.setOnItemLongClickListener( (p, b, pos, id) -> {
-            androidx.appcompat.app.AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             Database selectedRec = databaseList.get(pos);
             alertDialogBuilder.setTitle(R.string.covid_delete_msg)
                     .setMessage( getString(R.string.delDBRec))
@@ -336,7 +363,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         ProvinceOpener provinceOpener = new ProvinceOpener(this);
 
         db = provinceOpener.getWritableDatabase();
-        //provinceOpener.onDowngrade(db,1,1);
+       // provinceOpener.onDowngrade(db,1,1);
         for (Province result : resultList)
         {
             //add to the database

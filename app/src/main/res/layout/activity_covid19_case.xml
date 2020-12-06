@@ -23,7 +23,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/covidbg"
+            android:background="@drawable/covid"
             android:orientation="vertical">
 
             <ProgressBar
@@ -89,12 +89,13 @@
                     android:layout_weight="1"
                     android:text="@string/covid_search_btn" />
 
-                <Button
+                <CheckBox
                     android:id="@+id/save_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/covid_save_btn" />
+                    android:text="@string/covid_save_btn"
+                    android:checked="false"/>
 
             </LinearLayout>
 
