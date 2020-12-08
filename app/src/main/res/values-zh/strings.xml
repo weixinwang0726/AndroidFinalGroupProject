@@ -17,7 +17,7 @@
     <string name="btn_to_recipe">菜单搜索</string>
     <string name="recipe_header">欢迎来到菜单搜索</string>
     <string name="searchRecipeName">输入要搜索的菜单名</string>
-    <string name="recipe_search_btn">搜索</string>
+    <string name="r_search_btn">搜索</string>
     <string name="saveFavRecipe">收藏菜单</string>
 
     <string name="tm_city_name">城市名称</string>
@@ -109,9 +109,20 @@
     <string name="covidtitle">标题：Covid-19案例数据</string>
     <string name="covidauthor">作者：严梓尹</string>
     <string name="covidversion">版本号: 1.0 </string>
+
     <string name="covid_switch_message">记录已保存</string>
     <string name="covid_undo">不保存</string>
     <string name="covid_switch_message1">记录未保存</string>
+
+    <string name="r_result_title">菜谱名</string>
+    <string name="r_result_ingredient">食材</string>
+    <string name="r_result_url">网页链接</string>
+    <string name="r_save_string">保存</string>
+    <string name="r_delete">删除</string>
+    <string name="r_help">帮助</string>
+    <string name="r_help_content">欢迎使用菜谱搜索。输入菜谱名字或者食材名进行搜说。使用收藏功能可以收藏菜谱，也可以进行删除。</string>
+    <string name="r_OK">好的</string>
+
 
 
 </resources>

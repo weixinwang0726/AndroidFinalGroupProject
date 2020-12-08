@@ -18,7 +18,7 @@
     <string name="btn_to_recipe">Recipe</string>
     <string name="recipe_header">Welcome to Recipe Search</string>
     <string name="searchRecipeName">Enter the name of recipe to search</string>
-    <string name="recipe_search_btn">search</string>
+    <string name="r_search_btn">search</string>
     <string name="saveFavRecipe">Save to Favourite</string>
 
     <string name="tm_city_name">City Name</string>
@@ -106,9 +106,20 @@
     <string name="covidtitle">Covid-19 Data</string>
     <string name="covidauthor">Author: Ziyin Yan</string>
     <string name="covidversion">Version No.: 1.0 </string>
+
     <string name="covid_switch_message">Record saved</string>
     <string name="covid_undo">UNDO</string>
     <string name="covid_switch_message1">Record not saved</string>
+
+    <string name="r_result_title">Title</string>
+    <string name="r_result_ingredient">Ingredients</string>
+    <string name="r_result_url">URL</string>
+    <string name="r_save_string">SAVE</string>
+    <string name="r_delete">DELETE</string>
+    <string name="r_help">HELP</string>
+    <string name="r_help_content">Welcome to Recipe Search! You can enter a name or ingredient to search for the recipes. You can save your favourite recipes and delete recipe from your favourites.</string>
+    <string name="r_OK">OK</string>
+
 
 
 </resources>

@@ -128,6 +128,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.covid19:
                 startActivity(new Intent(MainActivity.this, Covid19Case.class));
                 break;
+            case R.id.recipe:
+                startActivity(new Intent(MainActivity.this, RecipeActivity.class));
+                break;
         }
         return true;
     }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item android:id="@+id/recipe_help"
+        android:title="@string/r_help"
+
+        android:orderInCategory="25"
+        app:showAsAction="always"/>
+
+
+    <item android:id="@+id/r_menu_fav_btn"
+        android:title="@string/saveFavRecipe"
+        android:orderInCategory="50"
+        android:icon="@drawable/recipe_fav"
+        app:showAsAction="always" />
+
+
+    <item
+        android:id="@+id/item3"
+        android:icon="@drawable/mainpage"
+        android:orderInCategory="75"
+        android:title="@string/r_gobacktoStartpage"
+        app:showAsAction="always" /> <!-- This uses showAsAction=never, so look at title= parameter -->
+
+    <item
+        android:id="@+id/item4"
+        android:icon="@drawable/recipeicon"
+        android:orderInCategory="100"
+        android:title="@string/app_name"
+        app:showAsAction="never" />
+
+</menu>
