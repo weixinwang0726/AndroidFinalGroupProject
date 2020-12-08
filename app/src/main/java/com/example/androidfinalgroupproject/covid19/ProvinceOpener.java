@@ -43,7 +43,7 @@ public class ProvinceOpener extends SQLiteOpenHelper {
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {   //Drop the old table:
 
         Log.i("Database downgrade", "Old version:" + oldVersion + "New version:" + newVersion);
-        // drop old table
+        //drop old table
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         //build new table
         onCreate(db);

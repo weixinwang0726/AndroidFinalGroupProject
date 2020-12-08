@@ -79,7 +79,7 @@
     <string name="covid_search_btn">搜索</string>
     <string name="covid_save_btn">保存</string>
     <string name="covid_help_text">帮助</string>
-    <string name="covid_help_content">请输入搜索日期，按照年月日的格式，然后根据省份选择covid-19案例数据。</string>
+    <string name="covid_help_content">请输入搜索日期，按照年月日的格式，然后根据省份选择covid-19案例数据。如果需要删除，请长按该条记录就可以删除。</string>
     <string name="covid_yes">是</string>
     <!---delete from database-->
     <string name="covid_delete_msg">确定删除吗?</string>
@@ -102,13 +102,18 @@
     <!--strings in covid_menu.xml-->
     <string name="choice1">转到主页 </string>
     <string name="choice2">数据库记录 </string>
-    <string name="choice3">用户手册 </string>
+    <string name="choice3">"关于 "</string>
     <string name="choice4">帮助</string>
 
     <!--strings in header_covid.xml-->
     <string name="covidtitle">标题：Covid-19案例数据</string>
     <string name="covidauthor">作者：严梓尹</string>
     <string name="covidversion">版本号: 1.0 </string>
+
+    <string name="covid_switch_message">记录已保存</string>
+    <string name="covid_undo">不保存</string>
+    <string name="covid_switch_message1">记录未保存</string>
+
     <string name="r_result_title">菜谱名</string>
     <string name="r_result_ingredient">食材</string>
     <string name="r_result_url">网页链接</string>
@@ -117,6 +122,7 @@
     <string name="r_help">帮助</string>
     <string name="r_help_content">欢迎使用菜谱搜索。输入菜谱名字或者食材名进行搜说。使用收藏功能可以收藏菜谱，也可以进行删除。</string>
     <string name="r_OK">好的</string>
+
 
 
 </resources>

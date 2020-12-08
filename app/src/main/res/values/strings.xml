@@ -62,16 +62,17 @@
     <string name="tm_title_menu">author:Weixin Wang.    version: 1.0</string>
 
     <string name="covid_toast_message">Author: Ziyin Yan.</string>
-    <string name="btn_to_Covid19Case">Covid-19 Case</string>
-    <string name="covid_caseText">Covid-19 Case Data</string>
-    <string name="covid_search">Enter a country name and date for searching</string>
+    <string name="btn_to_Covid19Case">"Covid-19 "</string>
+    <string name="covid_caseText">Covid-19  Data</string>
+    <string name="covid_search">Enter a country name and date(YYYY-MM-DD) for searching</string>
     <string name="covid_country_hint">Country</string>
     <string name="covid_date_hint">Date</string>
 
     <string name="covid_search_btn">Search</string>
-    <string name="covid_save_btn">Save</string>
+    <string name="covid_save_btn">Add to Database</string>
     <string name="covid_help_text">Help</string>
-    <string name="covid_help_content">Please input date in YYYY-MM-DD format, then click the search button to get the covid-19 case data based on provinces.</string>
+    <string name="covid_help_content">Please input date in YYYY-MM-DD format, then click the search button to get the data.
+              If you want to delete a record in the database, please press and hold the record to delete this record</string>
     <string name="covid_yes">Yes</string>
 
     <string name="covidopen">open</string>
@@ -90,11 +91,11 @@
     <string name="covid_longitude">Longitude: </string>
 
     <string name="choice1">Go to Main Page </string>
-    <string name="choice2">Records in Database </string>
-    <string name="choice3">User Manual </string>
+    <string name="choice2">"Database "</string>
+    <string name="choice3">About</string>
     <string name="choice4">Help </string>
 
-    <string name="covidtitle">Activity Title: Covid-19 Case Data</string>
+    <string name="covidtitle">Covid-19 Data</string>
     <string name="covidauthor">Author: Ziyin Yan</string>
     <string name="covidversion">Version No.: 1.0 </string>
     <string name="recipe_toast_message">Go to Recipe</string>
@@ -103,6 +104,11 @@
     <string name="r_author">Author: Jingshan Guan. Version: 1.0</string>
     <string name="r_my_fav_btn">My favourite recipe</string>
     <string name="r_gobacktoStartpage">Go back to Start page</string>
+
+    <string name="covid_switch_message">Record saved</string>
+    <string name="covid_undo">UNDO</string>
+    <string name="covid_switch_message1">Record not saved</string>
+
     <string name="r_result_title">Title</string>
     <string name="r_result_ingredient">Ingredients</string>
     <string name="r_result_url">URL</string>
@@ -111,5 +117,6 @@
     <string name="r_help">HELP</string>
     <string name="r_help_content">Welcome to Recipe Search! You can enter a name or ingredient to search for the recipes. You can save your favourite recipes and delete recipe from your favourites.</string>
     <string name="r_OK">OK</string>
+
 
 </resources>
