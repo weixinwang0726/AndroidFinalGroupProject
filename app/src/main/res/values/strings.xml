@@ -69,7 +69,7 @@
     <string name="covid_date_hint">Date</string>
 
     <string name="covid_search_btn">Search</string>
-    <string name="covid_save_btn">Save</string>
+    <string name="covid_save_btn">Add to Database</string>
     <string name="covid_help_text">Help</string>
     <string name="covid_help_content">Please input date in YYYY-MM-DD format, then click the search button to get the data.
               If you want to delete a record in the database, please press and hold the record to delete this record</string>

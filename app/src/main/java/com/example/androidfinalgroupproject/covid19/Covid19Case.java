@@ -137,48 +137,28 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         search button
          */
         @SuppressLint("UseSwitchCompatOrMaterialCode")
-        CheckBox saveBtn = findViewById(R.id.save_btn);
+
         Button searchBtn = findViewById(R.id.search_btn);
         searchBtn.setOnClickListener(click -> {
             String countryIn = countryInput.getText().toString();
             String dateIn = dateInput.getText().toString();
             saveArguments(countryIn, dateIn);
             loadProvinceList(countryIn, dateIn);
-            saveBtn.setChecked(false);
+
         });
 
         /*
          save button
          */
-       // Button saveBtn = findViewById(R.id.save_btn);
-        //saveBtn.setOnClickListener(click -> {
-           // String message = null;
-            //saveData(provinceList);
-           // message = "Save search results";
-            //Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-           // loadDataFromDatabase();
+         Button saveBtn = findViewById(R.id.save_btn);
+         saveBtn.setOnClickListener(click -> {
+                     String message = null;
+                     saveData(provinceList);
+                     message = "Save search results";
+                     Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+                     loadDataFromDatabase();
+                 });
 
-
-
-        //@SuppressLint("UseSwitchCompatOrMaterialCode")
-        //CheckBox saveBtn = findViewById(R.id.save_btn);
-        saveBtn.setOnCheckedChangeListener((cb,b)-> {
-                    if (b) {
-                        Snackbar.make(saveBtn, getResources().getString(R.string.covid_switch_message),
-                                Snackbar.LENGTH_LONG).setAction(getResources().getString(R.string.covid_undo),
-                                click -> cb.setChecked(!b)).show();
-                        boolean saveBtnState = saveBtn.isChecked();
-                        if (saveBtnState) {
-                            saveData(provinceList);
-                        }
-                        // else {
-                        //Snackbar.make(saveBtn, getResources().getString(R.string.switch_message1), Snackbar.LENGTH_LONG).setAction(getResources().getString(R.string.undo),
-                        //       click -> cb.setChecked(!b)).show();
-                        //    }
-                        //loadDataFromDatabase();
-                        // });
-                    }
-                });
 
         /*
             display province details
@@ -228,6 +208,17 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
                         Log.e("delete:",""+ selectedRec.getId() );
                         databaseList.remove(pos);
                         databaseListAdapter.notifyDataSetChanged();
+
+                        Snackbar.make(saveBtn, getResources().getString(R.string.covid_switch_message),
+                                Snackbar.LENGTH_LONG).setAction(getResources().getString(R.string.covid_undo),
+                                new View.OnClickListener(){
+                                    public void onClick(View v){
+                                        addData(selectedRec);
+                                        databaseList.add(selectedRec);
+                                        databaseListAdapter.notifyDataSetChanged();
+                                    }
+                                }).show();
+
                     })
                     //action of No button
                     .setNegativeButton(R.string.covid_undoBtn, (click, arg) -> { })
@@ -385,9 +376,22 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
      * delete record in database
      */
     private void deleteData(Database i){
-        db.delete( ProvinceOpener.TABLE_NAME, ProvinceOpener.COL_COUNTRY + "= ? and " + ProvinceOpener.COL_DATE + "= ?", new String[] {i.getCountry(), i.getDate()} );
+        db.delete( ProvinceOpener.TABLE_NAME, ProvinceOpener.COL_COUNTRY + "= ? and " + ProvinceOpener.COL_DATE + "= ?",
+                new String[] {i.getCountry(), i.getDate()} );
     }
 
+    private void addData(Database i){
+        ContentValues newRowValues = new ContentValues();
+        //add COUNTRY column:
+        newRowValues.put( ProvinceOpener.COL_COUNTRY, i.getCountry() );
+        //add DATE column:
+        newRowValues.put( ProvinceOpener.COL_DATE, i.getDate() );
+        //add PROVINCE column:
+        newRowValues.put( ProvinceOpener.COL_PROVINCE, i.getProvince() );
+        //add CASE column:
+        newRowValues.put( ProvinceOpener.COL_CASE, i.getCovidcase());
+        long insert = db.insert(ProvinceOpener.TABLE_NAME, null,newRowValues);
+    }
     /*
      * load record from Database
      */
