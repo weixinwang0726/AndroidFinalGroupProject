@@ -117,6 +117,7 @@
     <string name="r_help">帮助</string>
     <string name="r_help_content">欢迎使用菜谱搜索。输入菜谱名字或者食材名进行搜说。使用收藏功能可以收藏菜谱，也可以进行删除。</string>
     <string name="r_OK">好的</string>
+    <string name="r_recipe_loaded">菜谱加载完毕</string>
 
 
 </resources>

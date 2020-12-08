@@ -113,6 +113,7 @@
     <string name="r_help">HELP</string>
     <string name="r_help_content">Welcome to Recipe Search! You can enter a name or ingredient to search for the recipes. You can save your favourite recipes and delete recipe from your favourites.</string>
     <string name="r_OK">OK</string>
+    <string name="r_recipe_loaded">Recipe loaded</string>
 
 
 </resources>
