@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -48,6 +49,7 @@ public class AlbumDetailPage extends Fragment {
     private SongListAdapter mListAdapter;
     private ProgressBar mProgressBar;
     private ImageButton mImageButton;
+    private Button mButton;
     private AlbumDataSource mDataSource;
 
     private String albumName, artistName, albumId;
@@ -64,6 +66,7 @@ public class AlbumDetailPage extends Fragment {
         mListView = (ListView) view.findViewById(R.id.songs_list);
         mProgressBar = (ProgressBar) view.findViewById(R.id.progress_album);
         mImageButton = (ImageButton) view.findViewById(R.id.like_button);
+        mButton = (Button) view.findViewById(R.id.hide_button);
         mDataSource = ((AudioMainActivity) getActivity()).getDataSource();
 
         albumName = getArguments().getString("album");
@@ -85,6 +88,14 @@ public class AlbumDetailPage extends Fragment {
                 String url = "https://www.google.com/search?q=" + artistName + "+" + songs.get(position);
                 Uri uri = Uri.parse(url);
                 startActivity(new Intent(Intent.ACTION_VIEW, uri));
+            }
+        });
+
+        // 设置hide_button点击事件
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction().remove(getThisPage()).commit();
             }
         });
 
@@ -152,5 +163,9 @@ public class AlbumDetailPage extends Fragment {
             mListAdapter = new SongListAdapter(getContext(), R.layout.album_list_row, songs);
             mListView.setAdapter(mListAdapter);
         }
+    }
+
+    private AlbumDetailPage getThisPage() {
+        return this;
     }
 }

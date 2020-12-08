@@ -13,6 +13,4 @@
         android:background="@drawable/side_nav_bar"
         app:titleTextColor="@android:color/white" />
 
-    <include layout="@layout/audio_content_main"/>
-
 </LinearLayout>
