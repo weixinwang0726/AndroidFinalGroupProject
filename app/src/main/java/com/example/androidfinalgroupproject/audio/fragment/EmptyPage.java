@@ -36,4 +36,3 @@ public class EmptyPage extends Fragment {
         return view;
     }
 }
-
