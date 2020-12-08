@@ -4,16 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawer"
+    android:id="@+id/r_drawer"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
     tools:context=".recipe.RecipeActivity">
 
     <include
-        layout="@layout/recipe_details"
+        layout="@layout/recipe_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+
+  <!--navigation drawer with help menu toolbar-->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/r_nav_view"
         android:layout_width="wrap_content"
@@ -21,6 +23,9 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/recipe_header"
         app:menu="@menu/recipe_help_menu"/>
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,6 +46,9 @@
             android:layout_height="wrap_content"
             android:text="@string/r_search_btn"
             android:textSize="24sp" />
+
+
+
 
     </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

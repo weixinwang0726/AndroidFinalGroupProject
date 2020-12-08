@@ -22,11 +22,12 @@ public class RecipeFunction {
 
     {
         assert recipeSQLiteDatabase != null;
-        allColumns = new String[]{recipeSQLiteDatabase.TITLE, recipeSQLiteDatabase.INGREDIENT, recipeSQLiteDatabase.URL};
+        //define column names of the SQLiteDatabase
+        allColumns = new String[]{RecipeOpener.TITLE, RecipeOpener.INGREDIENT, RecipeOpener.URL};
     }
 
     public RecipeFunction(Context context) {
-        rOpener = new recipeSQLiteDatabase(context);
+        rOpener = new RecipeOpener(context);
     }
 
     public void open() {
@@ -36,30 +37,33 @@ public class RecipeFunction {
     //add recipe to favourite 
     public void addToFavoriteList(Recipe recipe) {
         ContentValues values = new ContentValues();
-        values.put(recipeSQLiteDatabase.TITLE, recipe.getTitle());
-        values.put(recipeSQLiteDatabase.INGREDIENT, recipe.getIngredient());
-        values.put(recipeSQLiteDatabase.URL, recipe.getUrl());
-        recipeSQLiteDatabase.insert(recipeSQLiteDatabase.TABLE_NAME, null, values);
+        values.put(RecipeOpener.TITLE, recipe.getTitle());
+        values.put(RecipeOpener.INGREDIENT, recipe.getIngredient());
+        values.put(RecipeOpener.URL, recipe.getUrl());
+        //insert the content to database
+        recipeSQLiteDatabase.insert(RecipeOpener.TABLE_NAME, null, values);
     }
-    //cursor movement to select recipe
-    private Recipe cursorTorecipe(Cursor cursor) {
+
+    public boolean isRecipeNotExists(Recipe r) {
+        Cursor cursor = recipeSQLiteDatabase.query(RecipeOpener.TABLE_NAME, allColumns,
+                RecipeOpener.TITLE + "=" + "'" + r.getTitle() + "'",
+                null, null, null, null);
+        boolean result = (cursor.getCount() == 0);
+        cursor.close();
+        return result;
+    }
 
 
-        Recipe r = new Recipe();
-        r.setTitle(cursor.getString(0));
-        r.setIngredient(cursor.getString(1));
-        r.setUrl(cursor.getString(2));
-        return r;
-    }
     //remove selected recipe from favourited table
     public void deleteSelectedRecipe(Recipe r) {
         String recipeselected = r.getUrl();
-        recipeSQLiteDatabase.delete(recipeSQLiteDatabase.TABLE_NAME, recipeSQLiteDatabase.TITLE + "=" + "'" + recipeselected + "'", null);
+        recipeSQLiteDatabase.delete(RecipeOpener.TABLE_NAME, RecipeOpener.TITLE + "=" + "'" + recipeselected + "'", null);
     }
 
+    //get all favourited recipes
     public List<Recipe> getAllFavoriteRecipe() {
         List<Recipe> recipelist = new ArrayList<>();
-        Cursor cursor = recipeSQLiteDatabase.query(recipeSQLiteDatabase.TABLE_NAME, allColumns,
+        Cursor cursor = recipeSQLiteDatabase.query(RecipeOpener.TABLE_NAME, allColumns,
                 null, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -71,13 +75,15 @@ public class RecipeFunction {
         return recipelist;
     }
 
-    public boolean isRecipeNotExists(Recipe r) {
-        Cursor cursor = recipeSQLiteDatabase.query(recipeSQLiteDatabase.TABLE_NAME, allColumns,
-                recipeSQLiteDatabase.TITLE + "=" + "'" + r.getTitle() + "'",
-                null, null, null, null);
-        boolean result = (cursor.getCount() == 0);
-        cursor.close();
-        return result;
-    }
-}
+    //cursor movement to select recipe
+    private Recipe cursorTorecipe(Cursor cursor) {
 
+        Recipe r = new Recipe();
+        r.setTitle(cursor.getString(0));
+        r.setIngredient(cursor.getString(1));
+        r.setUrl(cursor.getString(2));
+        return r;
+    }
+
+
+}

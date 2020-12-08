@@ -12,47 +12,45 @@ import androidx.annotation.Nullable;
 
 import com.example.androidfinalgroupproject.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * @Author: Jingshan Guan
+ * @Author:Jingshan Guan
  * @Date: 2020/12/05
  * @Version: 1.0
  */
+//a class for display recipe details
+public class RecipeDetailList extends ArrayAdapter<String> {
 
-public class RecipeListAdapter extends ArrayAdapter<Recipe> {
-
-    private List<Recipe> recipeList;
+    private List<String> rlist;
     int resource;
 
-    public RecipeListAdapter(@NonNull Context context, int resource, @NonNull List<Recipe> rList) {
-        super(context, resource, rList);
-        this.recipeList = rList;
+    public RecipeDetailList(@NonNull Context context, int resource, @NonNull List<String> resultlist) {
+        super(context, resource, resultlist);
+        this.rlist = resultlist;
         this.resource = resource;
     }
 
-
+    @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        Recipe recipe = getItem(position);
+        String recipe = getItem(position);
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View view = inflater.inflate(resource, parent, false);
-        TextView textView = (TextView) view.findViewById(R.id.editText_searchkeyword);
-        textView.setText(recipe.getUrl());
+        TextView textView = (TextView) view.findViewById(R.id.recipe_title);  //put text into recipe title textView
+        textView.setText(recipe);
         return view;
     }
 
-
+    @Nullable
     @Override
-    public Recipe getItem(int position) {
-        return recipeList.get(position);
+    public String getItem(int position) {
+        return rlist.get(position);
     }
 
     @Override
     public int getCount() {
-        return recipeList.size();
+        return rlist.size();
     }
 }
 

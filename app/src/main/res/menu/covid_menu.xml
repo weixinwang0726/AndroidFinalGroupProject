@@ -14,7 +14,7 @@
         android:icon="@drawable/recipeicon"
         app:showAsAction="always" /> <!--records saved in Database-->
 
-    <item android:id="@+id/item3"
+    <item android:id="@+id/main_page"
         android:title="@string/choice3"
         android:icon="@drawable/music"
         app:showAsAction="always"

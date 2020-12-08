@@ -17,7 +17,7 @@
     <string name="btn_to_recipe">Recipe</string>
     <string name="recipe_header">Welcome to Recipe Search</string>
     <string name="searchRecipeName">Enter the name of recipe to search</string>
-    <string name="r_search_btn">search</string>
+    <string name="r_search_btn">Search</string>
     <string name="saveFavRecipe">Save to Favourite</string>
 
     <string name="tm_help_content">You can input the city and radius (a number ,for exampe, input 100 means the radius is 100 km) to search events nearby.
@@ -112,5 +112,10 @@
     <string name="r_help_content">Welcome to Recipe Search! You can enter a name or ingredient to search for the recipes. You can save your favourite recipes and delete recipe from your favourites.</string>
     <string name="r_OK">OK</string>
     <string name="r_recipe_loaded">Recipe loaded</string>
+    <string name="r_details">Recipe details</string>
+    <string name="r_fav_added">recipe added to favourite</string>
+    <string name="r_fave_deleted">recipe deleted from favourtie</string>
+    <string name="r_delete_alert">Recipe will be deleted,  still proceed?</string>
+    <string name="r_fav_duplicate">Recipe already added to favourite</string>
 
 </resources>
