@@ -10,13 +10,16 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AndroidFinalGroupProject">
+        android:theme="@style/Theme.AndroidFinalGroupProject"
+        android:usesCleartextTraffic="true">
         <activity android:name=".ticketmaster.EventDetailActivity" />
-        <activity android:name=".audio.AudioMainActivity" android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".audio.AudioMainActivity"
+            android:theme="@style/AppTheme" />
         <activity android:name=".recipe.RecipeActivity" />
         <activity android:name=".ticketmaster.TicketMasterActivity" />
-        <activity android:name=".covid19.Covid19Case"/>
-        <activity android:name=".covid19.ProvinceDetailActivity"/>
+        <activity android:name=".covid19.Covid19Case" />
+        <activity android:name=".covid19.ProvinceDetailActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

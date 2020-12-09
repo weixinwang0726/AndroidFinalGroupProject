@@ -285,7 +285,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
                 startActivity(new Intent(Covid19Case.this, RecipeActivity.class));
                 message = "Go to Recipe Page";
                 break;
-            case R.id.item3:
+            case R.id.main_page:
                 startActivity(new Intent(Covid19Case.this, AudioMainActivity.class));
                 message = "Go to Audio Page";
                 break;
@@ -323,7 +323,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
                 loadDataFromDatabase();
                 message = "Show Database";
                 break;
-            case R.id.item3:
+            case R.id.main_page:
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
                 alertDialogBuilder.setTitle(R.string.covid_help_text)

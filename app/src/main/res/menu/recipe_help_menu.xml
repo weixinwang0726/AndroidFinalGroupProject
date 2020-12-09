@@ -9,26 +9,28 @@
         android:orderInCategory="25"
         app:showAsAction="always"/>
 
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/recipeicon"
+        android:orderInCategory="50"
+        android:title="@string/r_search_btn"
+        app:showAsAction="never" />
+
 
     <item android:id="@+id/r_menu_fav_btn"
-        android:title="@string/saveFavRecipe"
-        android:orderInCategory="50"
+        android:title="@string/r_fav_click_button"
+        android:orderInCategory="75"
         android:icon="@drawable/recipe_fav"
         app:showAsAction="always" />
 
 
     <item
-        android:id="@+id/item3"
+        android:id="@+id/main_page"
         android:icon="@drawable/mainpage"
-        android:orderInCategory="75"
-        android:title="@string/r_gobacktoStartpage"
-        app:showAsAction="always" /> <!-- This uses showAsAction=never, so look at title= parameter -->
-
-    <item
-        android:id="@+id/item4"
-        android:icon="@drawable/recipeicon"
         android:orderInCategory="100"
-        android:title="@string/app_name"
-        app:showAsAction="never" />
+        android:title="@string/r_gobacktoStartpage"
+        app:showAsAction="ifRoom" />
+
+
 
 </menu>

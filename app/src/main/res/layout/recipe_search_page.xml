@@ -11,7 +11,7 @@
         android:orientation="horizontal"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
-        android:background="@color/cardview_shadow_end_color">
+        >
 
         <EditText
             android:id="@+id/Recipe_search_edit_text"
@@ -49,7 +49,7 @@
             android:id="@+id/progress_recipe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:layout_centerVertical="true"
             style="?android:attr/progressBarStyleHorizontal"/>
 
