@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -141,17 +142,17 @@ public class RecipeSearch extends Fragment {
 
                 String line = reader.readLine();
                 JSONObject jsonObject = new JSONObject(line);
-                JSONArray jsonArray = jsonObject.getJSONArray("ingredient");
+                JSONArray jsonArray = jsonObject.getJSONArray("results");
 
                 int progress = 0;
                 for (int i = 0; i < jsonArray.length(); i++) {
 
 
-                JSONObject recipeObject = jsonArray.getJSONObject(i);
+                    JSONObject recipeObject = jsonArray.getJSONObject(i);
                     Recipe recipe = new Recipe();
                     recipe.setTitle(recipeObject.getString("title"));
-                    recipe.setIngredient(recipeObject.getString("ingredient"));
-                    recipe.setUrl(recipeObject.getString("url"));
+                    recipe.setIngredient(recipeObject.getString("ingredients"));
+                    recipe.setUrl(recipeObject.getString("href"));
 
                     recipeList.add(recipe);
                     progress += 100 / jsonArray.length();
@@ -162,6 +163,8 @@ public class RecipeSearch extends Fragment {
 
             } catch (Exception e) {
                 e.printStackTrace();
+
+                Log.e("TAG", "doInBackground: ", e);
             }
             return null;
         }

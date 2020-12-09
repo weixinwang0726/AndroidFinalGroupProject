@@ -40,7 +40,7 @@ public class RecipeListAdapter extends ArrayAdapter<Recipe> {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View view = inflater.inflate(resource, parent, false);
         TextView textView = (TextView) view.findViewById(R.id.recipe_title);
-        textView.setText(recipe.getUrl());
+        textView.setText(recipe.getTitle());
         return view;
     }
 

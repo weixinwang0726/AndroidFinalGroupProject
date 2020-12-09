@@ -110,7 +110,7 @@ public class RecipeActivity extends AppCompatActivity   {
                     case R.id.r_menu_fav_btn:
                         getSupportFragmentManager()
                                 .beginTransaction()
-                                .replace(R.id.main_content, new RecipeFavActivity())
+                                .replace(R.id.recip_headly, new RecipeFavActivity())
                                 .addToBackStack(null)
                                 .commit();
                         break;
