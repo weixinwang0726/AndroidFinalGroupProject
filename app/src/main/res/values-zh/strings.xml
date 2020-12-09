@@ -123,6 +123,8 @@
     <string name="r_fave_deleted">从收藏夹移除</string>
     <string name="r_delete_alert">确定把菜谱从收藏移除？</string>
     <string name="r_fav_duplicate">菜谱已保存在收藏夹</string>
+    <string name="r_fav_title">收藏的菜谱</string>
+    <string name="r_fav_click_button">收藏</string>
 
 
 </resources>

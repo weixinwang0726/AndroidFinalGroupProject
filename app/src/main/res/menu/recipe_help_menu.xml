@@ -18,7 +18,7 @@
 
 
     <item android:id="@+id/r_menu_fav_btn"
-        android:title="@string/saveFavRecipe"
+        android:title="@string/r_fav_click_button"
         android:orderInCategory="75"
         android:icon="@drawable/recipe_fav"
         app:showAsAction="always" />

@@ -119,6 +119,8 @@
     <string name="r_fave_deleted">recipe deleted from favourite</string>
     <string name="r_delete_alert">Recipe will be deleted,  still proceed?</string>
     <string name="r_fav_duplicate">Recipe already added to favourite</string>
+    <string name="r_fav_title">Favourite recipes</string>
+    <string name="r_fav_click_button">Save to favourite</string>
 
 
 </resources>
