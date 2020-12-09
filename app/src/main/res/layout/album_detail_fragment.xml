@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorBackground">
 
     <LinearLayout
+        android:id="@+id/linear"
+        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorBackgroundChange"
+        android:background="#8C9CF3"
         android:orientation="horizontal"
         android:paddingEnd="15dp"
         android:paddingTop="15dp"
@@ -25,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="15dp"
-                android:textColor="@color/colorText"
+                android:textColor="@android:color/white"
                 android:textSize="28sp" />
 
             <TextView
@@ -33,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="15dp"
-                android:textColor="@color/colorText"
+                android:textColor="@android:color/white"
                 android:textSize="16sp"/>
 
         </LinearLayout>
@@ -49,8 +50,10 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:layout_below="@+id/linear"
+        android:layout_above="@+id/hide_button"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ProgressBar
             android:id="@+id/progress_album"
@@ -67,4 +70,13 @@
 
     </RelativeLayout>
 
-</LinearLayout>
+    <Button
+        android:id="@+id/hide_button"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_light"
+        android:text="hide"
+        android:textSize="20sp"/>
+
+</RelativeLayout>

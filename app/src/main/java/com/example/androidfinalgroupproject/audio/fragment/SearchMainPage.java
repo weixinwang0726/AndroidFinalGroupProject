@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -67,11 +68,16 @@ public class SearchMainPage extends Fragment {
         mSharedPreferences = getContext().getSharedPreferences("sp", Context.MODE_PRIVATE);
         mEditText.setText(mSharedPreferences.getString("Artist", ""));
 
+        if (albumList.size() > 0) {
+            mListView.setAdapter(mAdapter);
+        }
+
         // 设置搜索按钮
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveUserType();
+                closeKeyboard();
                 if (albumList.size() > 0) {
                     albumList.clear();
                     mAdapter.notifyDataSetChanged();
@@ -81,6 +87,7 @@ public class SearchMainPage extends Fragment {
                 SearchArtist searchArtist = new SearchArtist();
                 // 传入url开始加载数据
                 searchArtist.execute(api);
+                ((AudioMainActivity) getActivity()).setPage(getSearchMainPage());
             }
         });
 
@@ -94,16 +101,25 @@ public class SearchMainPage extends Fragment {
                 bundle.putString("album", album.getStrAlbum());
                 bundle.putString("albumId", album.getIdAlbum());
 
-                AlbumDetailPage detailPage = new AlbumDetailPage();
-                detailPage.setArguments(bundle);
+                EmptyPage emptyPage = new EmptyPage();
+                emptyPage.setArguments(bundle);
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.main_content, detailPage)
+                        .replace(R.id.main_content, emptyPage)
                         .addToBackStack(null)
                         .commit();
             }
         });
         return view;
+    }
+
+    private void closeKeyboard() {
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm.isActive() && getActivity().getCurrentFocus() != null) {
+            if (getActivity().getCurrentFocus().getWindowToken() != null) {
+                imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            }
+        }
     }
 
     /**
@@ -165,5 +181,9 @@ public class SearchMainPage extends Fragment {
             mListView.setAdapter(mAdapter);
             Toast.makeText(getContext(), getString(R.string.load_albums), Toast.LENGTH_LONG).show();
         }
+    }
+
+    private SearchMainPage getSearchMainPage() {
+        return this;
     }
 }

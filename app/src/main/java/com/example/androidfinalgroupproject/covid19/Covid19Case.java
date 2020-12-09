@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -21,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -33,6 +35,7 @@ import com.example.androidfinalgroupproject.audio.AudioMainActivity;
 import com.example.androidfinalgroupproject.recipe.RecipeActivity;
 import com.example.androidfinalgroupproject.ticketmaster.TicketMasterActivity;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -81,7 +84,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_covid19_case);
 
-        boolean isTablet = findViewById(R.id.covidfragmentLocation) != null;
+        boolean isTablet = findViewById(R.id.province_list_view) != null;
 
         /*
          set toolbar:
@@ -133,25 +136,28 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         /*
         search button
          */
+        @SuppressLint("UseSwitchCompatOrMaterialCode")
+
         Button searchBtn = findViewById(R.id.search_btn);
         searchBtn.setOnClickListener(click -> {
             String countryIn = countryInput.getText().toString();
             String dateIn = dateInput.getText().toString();
             saveArguments(countryIn, dateIn);
             loadProvinceList(countryIn, dateIn);
+
         });
 
         /*
          save button
          */
-        Button saveBtn = findViewById(R.id.save_btn);
-        saveBtn.setOnClickListener(click -> {
-            String message = null;
-            saveData(provinceList);
-            message = "Save search results";
-            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-           // loadDataFromDatabase();
-        });
+         Button saveBtn = findViewById(R.id.save_btn);
+         saveBtn.setOnClickListener(click -> {
+                     String message = null;
+                     saveData(provinceList);
+                     message = "Save search results";
+                     Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+                     loadDataFromDatabase();
+                 });
 
         /*
             display province details
@@ -170,12 +176,12 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
 
             if(isTablet)
            {
-
                 dFragment.setArguments(d);
+                //load the fragment
                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.covidfragmentLocation, dFragment)
-                        .commit();
+                       .beginTransaction()
+                       .replace(R.id.covidfragmentLocation, dFragment)
+                       .commit();
            }
             else
             {
@@ -191,7 +197,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
 
         //delete from database for long clicking item: use for loop to delete?
         databaseListView.setOnItemLongClickListener( (p, b, pos, id) -> {
-            androidx.appcompat.app.AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             Database selectedRec = databaseList.get(pos);
             alertDialogBuilder.setTitle(R.string.covid_delete_msg)
                     .setMessage( getString(R.string.delDBRec))
@@ -201,6 +207,17 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
                         Log.e("delete:",""+ selectedRec.getId() );
                         databaseList.remove(pos);
                         databaseListAdapter.notifyDataSetChanged();
+
+                        Snackbar.make(saveBtn, getResources().getString(R.string.covid_switch_message),
+                                Snackbar.LENGTH_LONG).setAction(getResources().getString(R.string.covid_undo),
+                                new View.OnClickListener(){
+                                    public void onClick(View v){
+                                        addData(selectedRec);
+                                        databaseList.add(selectedRec);
+                                        databaseListAdapter.notifyDataSetChanged();
+                                    }
+                                }).show();
+
                     })
                     //action of No button
                     .setNegativeButton(R.string.covid_undoBtn, (click, arg) -> { })
@@ -336,18 +353,15 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         ProvinceOpener provinceOpener = new ProvinceOpener(this);
 
         db = provinceOpener.getWritableDatabase();
-        //provinceOpener.onDowngrade(db,1,1);
+//       provinceOpener.onDowngrade(db,1,1);
         for (Province result : resultList)
         {
             //add to the database
             ContentValues newRowValues = new ContentValues();
-            //add COUNTRY column:
+            //add all columns:
             newRowValues.put( ProvinceOpener.COL_COUNTRY, result.getCountry() );
-            //add DATE column:
             newRowValues.put( ProvinceOpener.COL_DATE, result.getDate() );
-            //add PROVINCE column:
             newRowValues.put( ProvinceOpener.COL_PROVINCE, result.getProvince() );
-            //add CASE column:
             newRowValues.put( ProvinceOpener.COL_CASE, result.getCase() );
 
             //insert into the database:
@@ -355,12 +369,22 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         }
     }
     /*
-     * delete record in database
+     * delete data in database
      */
     private void deleteData(Database i){
-        db.delete( ProvinceOpener.TABLE_NAME, ProvinceOpener.COL_COUNTRY + "= ? and " + ProvinceOpener.COL_DATE + "= ?", new String[] {i.getCountry(), i.getDate()} );
+        db.delete( ProvinceOpener.TABLE_NAME, ProvinceOpener.COL_COUNTRY + "= ? and " + ProvinceOpener.COL_DATE + "= ?",
+                new String[] {i.getCountry(), i.getDate()} );
     }
 
+    private void addData(Database i){
+        ContentValues newRowValues = new ContentValues();
+        //add COUNTRY columns:
+        newRowValues.put( ProvinceOpener.COL_COUNTRY, i.getCountry() );
+        newRowValues.put( ProvinceOpener.COL_DATE, i.getDate() );
+        newRowValues.put( ProvinceOpener.COL_PROVINCE, i.getProvince() );
+        newRowValues.put( ProvinceOpener.COL_CASE, i.getCovidcase());
+        long insert = db.insert(ProvinceOpener.TABLE_NAME, null,newRowValues);
+    }
     /*
      * load record from Database
      */

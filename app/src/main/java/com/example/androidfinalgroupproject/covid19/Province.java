@@ -77,7 +77,9 @@ public class Province {
     }
 
     public String getDate() {
-        return date;
+        if(null == this.date) return this.date;
+        else
+        return date.substring(0,10);
     }
 
     public void setDate(String date) {
