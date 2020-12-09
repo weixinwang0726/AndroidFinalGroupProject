@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         app:title="@string/app_name"
         android:background="@drawable/side_nav_bar"
-        app:titleTextColor="@android:color/white" />
+        app:titleTextColor="@color/design_default_color_surface" />
 
     <include layout="@layout/recipe_header"/>
 

@@ -54,13 +54,13 @@ public class RecipeFunction {
     }
 
 
-    //remove selected recipe from favourited table
+    //remove selected recipe from favourite table
     public void deleteSelectedRecipe(Recipe r) {
         String recipeselected = r.getUrl();
         recipeSQLiteDatabase.delete(RecipeOpener.TABLE_NAME, RecipeOpener.TITLE + "=" + "'" + recipeselected + "'", null);
     }
 
-    //get all favourited recipes
+    //get all saved recipes to a list
     public List<Recipe> getAllFavoriteRecipe() {
         List<Recipe> recipelist = new ArrayList<>();
         Cursor cursor = recipeSQLiteDatabase.query(RecipeOpener.TABLE_NAME, allColumns,
@@ -75,7 +75,7 @@ public class RecipeFunction {
         return recipelist;
     }
 
-    //cursor movement to select recipe
+
     private Recipe cursorTorecipe(Cursor cursor) {
 
         Recipe r = new Recipe();

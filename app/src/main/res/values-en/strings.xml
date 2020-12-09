@@ -130,7 +130,7 @@
     <string name="r_recipe_loading">Loading recipe</string>
 
     <string name="covid_title">COVID-19 Detail</string>
-
+    <string name="r_already_saved">Recipe already saved in favourite</string>
 
 
 </resources>
