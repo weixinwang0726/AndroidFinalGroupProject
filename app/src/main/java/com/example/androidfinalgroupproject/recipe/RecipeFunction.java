@@ -21,7 +21,7 @@ public class RecipeFunction {
     String[] allColumns;
 
     {
-        assert recipeSQLiteDatabase != null;
+        //assert recipeSQLiteDatabase != null;
         //define column names of the SQLiteDatabase
         allColumns = new String[]{RecipeOpener.TITLE, RecipeOpener.INGREDIENT, RecipeOpener.URL};
     }

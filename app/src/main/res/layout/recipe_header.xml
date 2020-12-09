@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:paddingTop="50dp"
+    android:layout_height="match_parent"
+    android:id="@+id/recip_headly">
 
     <TextView
         android:id="@+id/recipe_headertextView"
@@ -22,15 +24,11 @@
         android:text="@string/r_author" />
 
 
-
-
-
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        app:srcCompat="@drawable/recipe_background" />
+    <!-- <ImageView
+         android:id="@+id/imageView2"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_weight="1"
+         app:srcCompat="@drawable/recipe_background" />-->
 
 </LinearLayout>

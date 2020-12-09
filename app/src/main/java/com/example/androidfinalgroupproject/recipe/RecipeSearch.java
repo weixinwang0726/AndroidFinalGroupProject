@@ -112,7 +112,7 @@ public class RecipeSearch extends Fragment {
                 detailrecipe.setArguments(bundle);
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.main_content, detailrecipe)
+                        .replace(R.id.recip_headly, detailrecipe)
                         .addToBackStack(null)
                         .commit();
             }

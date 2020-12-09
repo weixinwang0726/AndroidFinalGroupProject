@@ -101,7 +101,7 @@ public class RecipeActivity extends AppCompatActivity   {
                     case R.id.search:
                         getSupportFragmentManager()
                                 .beginTransaction()
-                                .replace(R.id.main_content, page)
+                                .replace(R.id.recip_headly, page)
                                 .addToBackStack(null)
                                 .commit();
                         break;
@@ -138,6 +138,11 @@ public class RecipeActivity extends AppCompatActivity   {
             }
 
         });
+/*        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_content, page)
+                .addToBackStack(null)
+                .commit();*/
 
     }
 
