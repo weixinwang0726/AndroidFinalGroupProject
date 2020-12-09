@@ -119,5 +119,6 @@
     <string name="r_fav_duplicate">Recipe already added to favourite</string>
     <string name="r_fav_title">Favourite recipes</string>
     <string name="r_fav_click_button">Save to favourite</string>
+    <string name="r_recipe_loading">Loading recipe</string>
 
 </resources>

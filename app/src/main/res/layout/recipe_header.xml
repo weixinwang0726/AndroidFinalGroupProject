@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:paddingTop="50dp"
     android:layout_height="match_parent"
-    android:background="@drawable/r_food_background"
+
 
     android:id="@+id/recip_headly">
 
@@ -32,5 +32,5 @@
          android:layout_height="wrap_content"
          android:layout_weight="1"
          app:srcCompat="@drawable/recipe_background" />-->
-
+    <!-- android:background="@drawable/r_food_background"  -->
 </LinearLayout>

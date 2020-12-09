@@ -6,11 +6,14 @@
     android:layout_height="match_parent"
     android:id="@+id/r_drawer"
     android:fitsSystemWindows="true"
+    android:background="@drawable/r_food_background"
     tools:openDrawer="start"
     tools:context=".recipe.RecipeActivity">
 
     <include
         layout="@layout/recipe_toolbar"
+
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

@@ -125,6 +125,7 @@
     <string name="r_fav_duplicate">菜谱已保存在收藏夹</string>
     <string name="r_fav_title">收藏的菜谱</string>
     <string name="r_fav_click_button">收藏</string>
+    <string name="r_recipe_loading">菜谱加载中</string>
 
 
 </resources>

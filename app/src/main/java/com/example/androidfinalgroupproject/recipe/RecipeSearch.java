@@ -22,9 +22,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.androidfinalgroupproject.R;
-import com.example.androidfinalgroupproject.recipe.RecipeActivity;
-import com.example.androidfinalgroupproject.recipe.Recipe;
-import com.example.androidfinalgroupproject.recipe.RecipeListAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -46,12 +43,12 @@ import java.util.List;
 //RecipeSearch class for recipe search function, in recipe search page
 public class RecipeSearch extends Fragment {
 
-    private EditText mEditText;
-    private Button mButton;
-    private ProgressBar mProgressBar;
-    private ListView mListView;
-    private RecipeListAdapter mAdapter;
-    private SharedPreferences mSharedPreferences;
+    private EditText edit_text;
+    private Button button;
+    private ProgressBar pb;
+    private ListView list_view;
+    private RecipeListAdapter r_ListAdapter;
+    private SharedPreferences sp;
 
     private List<Recipe> recipeList = new ArrayList<>();
 
@@ -59,39 +56,37 @@ public class RecipeSearch extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recipe_search_page, null);
-        //Todo
+
         ((RecipeActivity) getActivity()).getToolbar().setTitle(getString(R.string.recipe_header));
 
-        // initialize EditText, search button, progress bar, list view
+        // initialize EditText, search button, progress bar, ListView
 
-        mEditText = (EditText) view.findViewById(R.id.Recipe_search_edit_text);
+        edit_text = (EditText) view.findViewById(R.id.Recipe_search_edit_text);
 
-        mButton = (Button) view.findViewById(R.id.recipe_search_button);
+        button = (Button) view.findViewById(R.id.recipe_search_button);
 
-        mProgressBar = (ProgressBar) view.findViewById(R.id.progress_recipe);
+        pb = (ProgressBar) view.findViewById(R.id.progress_recipe);
 
-        mListView = (ListView) view.findViewById(R.id.recipe_search_result_list);
+        list_view = (ListView) view.findViewById(R.id.recipe_search_result_list);
 
         // SharedPreferences to save the last recipe that was searched and show it the next time the application is launched/
-        mSharedPreferences = getContext().getSharedPreferences("shared_preference", Context.MODE_PRIVATE);
+        sp = getContext().getSharedPreferences("shared_preference", Context.MODE_PRIVATE);
 
-        mEditText.setText(mSharedPreferences.getString("Recipe", ""));
+        edit_text.setText(sp.getString("ingredient", ""));
 
         // search button action
-        mButton.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveUserType();
 
-                //TODO
-
                 if (recipeList.size() > 0) {
                     recipeList.clear();
-                    mAdapter.notifyDataSetChanged();
+                    r_ListAdapter.notifyDataSetChanged();
                 }
+                //connect to recipe search API ,format i = YYYY is the ingredients
+                String api = "http://www.recipepuppy.com/api/?i=" + edit_text.getText().toString().trim();
 
-                //connect to recipe search API
-                String api = "http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3";
                 SearchRecipe searchRecipe = new SearchRecipe();
 
                 searchRecipe.execute(api);
@@ -99,7 +94,7 @@ public class RecipeSearch extends Fragment {
         });
 
         // click on the search result to load recipe details using Bundle
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Recipe recipe = recipeList.get(position);
@@ -121,10 +116,10 @@ public class RecipeSearch extends Fragment {
         return view;
     }
 
-    //save user's last input
+    //save user's last input with SharedPreferences
     private void saveUserType() {
-        SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putString("Artist", mEditText.getText().toString().trim());
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("ingredient", edit_text.getText().toString().trim());
         editor.commit();
     }
 
@@ -157,7 +152,6 @@ public class RecipeSearch extends Fragment {
                     recipeList.add(recipe);
                     progress += 100 / jsonArray.length();
                     publishProgress(progress);
-
                     Thread.sleep(50);
                 }
 
@@ -172,20 +166,20 @@ public class RecipeSearch extends Fragment {
         @Override
         protected void onProgressUpdate(Integer... values) {
             //show progress bar
-            mProgressBar.setVisibility(View.VISIBLE);
-            mProgressBar.setProgress(values[0]);
+            pb.setVisibility(View.VISIBLE);
+            pb.setProgress(values[0]);
         }
 
-       //load data from database
+        //load data from database
         @Override
         protected void onPostExecute(String s) {
-            mProgressBar.setVisibility(View.VISIBLE);
-            //
-            mAdapter = new RecipeListAdapter(getContext(), R.layout.recipe_list_row, recipeList);
+            pb.setVisibility(View.VISIBLE);
 
-            mListView.setAdapter(mAdapter);
-            //alert user, recipe loaded message
-            Toast.makeText(getContext(), getString(R.string.r_recipe_loaded), Toast.LENGTH_LONG).show();
+            r_ListAdapter = new RecipeListAdapter(getContext(), R.layout.recipe_list_row, recipeList);
+            Toast.makeText(getContext(), getString(R.string.r_recipe_loading), Toast.LENGTH_LONG).show();
+            list_view.setAdapter(r_ListAdapter);
+
+            //Toast.makeText(getContext(), getString(R.string.r_recipe_loaded), Toast.LENGTH_LONG).show();
         }
     }
 }
