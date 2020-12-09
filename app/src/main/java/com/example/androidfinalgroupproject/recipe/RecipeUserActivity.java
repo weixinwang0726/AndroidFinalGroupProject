@@ -22,13 +22,14 @@ import androidx.fragment.app.Fragment;
 import com.example.androidfinalgroupproject.R;
 import com.google.android.material.snackbar.Snackbar;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
 
-import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -41,7 +42,7 @@ import java.util.ArrayList;
 //class for user to load searched recipe, add to favourite, and delete from favourite
 public class RecipeUserActivity extends Fragment {
 
-    private TextView textTitle, textIngredient,textURL;
+    private TextView textTitle, textIngredient, textURL;
     private ListView rListView;
     private RecipeListAdapter rListAdapter;
     private ProgressBar pbar;
@@ -51,7 +52,9 @@ public class RecipeUserActivity extends Fragment {
     private String rTitle, rIngredient, rURL;
 
     //create an Arraylist of Recipe object
-    private ArrayList<String> rlist = new ArrayList<Recipe>();
+
+    //ArrayList<String> imcompatible with <Recipe>
+    private ArrayList<Recipe> rlist = new ArrayList<Recipe>();
     private Snackbar SnackBar;
 
     @Nullable
@@ -69,7 +72,7 @@ public class RecipeUserActivity extends Fragment {
         //recipe search results in a listView
         rListView = (ListView) view.findViewById(R.id.recipe_list);
         //progress bar
-        pbar = (ProgressBar) view.findViewById(R.id.progress_album);
+        pbar = (ProgressBar) view.findViewById(R.id.progress_recipe);
 
         //favourite button
         favbtn = (ImageButton) view.findViewById(R.id.fav_button);
@@ -77,20 +80,19 @@ public class RecipeUserActivity extends Fragment {
         recipeData = ((RecipeActivity) getActivity()).getDataSource();
 
 
-
         //TODO
 
-        rTitle=getArguments().getString("title");   //the search term for name or ingredient entered
+        rTitle = getArguments().getString("title");   //the search term for name or ingredient entered
         rIngredient = getArguments().getString("ingredient"); //ingredients that the recipe must include.
 
 
-
         textTitle.setText("Recipe Title: " + rTitle);
-        textIngredient.setText( "Ingredients: " + rIngredient);
+        textIngredient.setText("Ingredients: " + rIngredient);
 
 
         //obtain recipe URL,  search for the recipe using name or ingredient
-        String url = "http://www.recipepuppy.com/api/?i=" + rIngredient+ "&q=" + rTitle ;
+        // i.e   http://www.recipepuppy.com/api/?i=egg&q=omelet&p=3%22   for "egg" "omelet"
+        String url = "http://www.recipepuppy.com/api/?i=" + rIngredient + "&q=" + rTitle + "&p=3";
 
         SearchRecipe sr = new SearchRecipe();
         sr.execute(url);
@@ -101,7 +103,7 @@ public class RecipeUserActivity extends Fragment {
         rListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String url  = "http://www.recipepuppy.com/api/?i=" + rIngredient+ "&q=" + rTitle ;
+                String url = "http://www.recipepuppy.com/api/?i=" + rIngredient + "&q=" + rTitle;
                 Uri uri = Uri.parse(url);
                 startActivity(new Intent(Intent.ACTION_VIEW, uri));
             }
@@ -115,7 +117,7 @@ public class RecipeUserActivity extends Fragment {
                 if (recipeData.isRecipeNotExists(r)) { //if the recipe has not added to favourite
                     recipeData.addToFavoriteList(r);//add to favourite
                     Snackbar.make(v, rTitle + getString(R.string.r_fav_added), Snackbar.LENGTH_LONG)  //alert user, recipe has added to favourite
-                                    //  XXXXX recipe added to Favourite
+                            //  XXXXX recipe added to Favourite
 
                             .setAction(getString(R.string.cancel), new View.OnClickListener() {
                                 @Override
@@ -137,10 +139,33 @@ public class RecipeUserActivity extends Fragment {
 
         @Override
         protected String doInBackground(String... strings) {
+            String title = "";
+            String ingredient = "";
+            String link = "";
+
+
             try {
-                URL url = new URL(strings[0]);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                InputStream response = connection.getInputStream();
+                URL url = null;
+                try {
+                    url = new URL(strings[0]);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                HttpURLConnection connection = null;
+                try {
+                    connection = (HttpURLConnection) url.openConnection();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                InputStream response = null;
+                try {
+                    response = connection.getInputStream();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                //use JSON
+/*
                 BufferedReader reader = new BufferedReader(new InputStreamReader(response, "UTF-8"), 8);
 
                 String line = reader.readLine();
@@ -159,6 +184,105 @@ public class RecipeUserActivity extends Fragment {
                 e.printStackTrace();
             }
             return null;
+            */
+                //end of JSon
+
+
+                //use XMLPullParse
+
+
+                XmlPullParserFactory factory = null;
+                try {
+                    factory = XmlPullParserFactory.newInstance();
+                } catch (XmlPullParserException e) {
+                    e.printStackTrace();
+                }
+                factory.setNamespaceAware(false);
+                XmlPullParser xpp = null;
+
+                try {
+                    xpp = factory.newPullParser();
+                } catch (XmlPullParserException e) {
+                    e.printStackTrace();
+                }
+
+                try {
+                    xpp.setInput(response, "UTF-8");
+                } catch (XmlPullParserException e) {
+                    e.printStackTrace();
+                }
+
+                //now loop the XML
+
+                int eventType = 0;
+                try {
+                    eventType = xpp.getEventType();
+                } catch (XmlPullParserException e) {
+                    e.printStackTrace();
+                }
+
+                try {
+                    while (xpp.getEventType() != XmlPullParser.END_DOCUMENT) {
+                        if (eventType == XmlPullParser.START_TAG) {
+                            if (xpp.getName().equals("title")) {
+
+                                try {
+                                    title = xpp.nextText();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (XmlPullParserException e) {
+                                    e.printStackTrace();
+                                }
+                                publishProgress(25);
+                            } else if (xpp.getName().equals("href")) {
+                                try {
+                                    link = xpp.nextText();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (XmlPullParserException e) {
+                                    e.printStackTrace();
+                                }
+                                publishProgress(50);
+
+                            } else if (xpp.getName().equals("ingredients")) {
+                                try {
+                                    ingredient = xpp.nextText();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (XmlPullParserException e) {
+                                    e.printStackTrace();
+                                }
+                                publishProgress(75);
+                            }
+
+                            if (!title.equals("") && !link.equals("") && !ingredient.equals("")) {
+
+                                rlist.add(new Recipe(title, ingredient, link));
+
+                                title = "";
+                                ingredient = "";
+                                link = "";
+                            }
+                        }
+                        try {
+                            xpp.next();  //move to the next XML event
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (XmlPullParserException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+
+
+                } catch (XmlPullParserException e) {
+                    e.printStackTrace();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }return "search finished";
         }
 
         @Override
@@ -168,12 +292,12 @@ public class RecipeUserActivity extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(String s) {
+        public void onPostExecute(String s) {
             pbar.setVisibility(View.INVISIBLE);
-          rListAdapter = new RecipeListAdapter(getContext(), R.layout.recipe_list_row, rlist);
+            rListAdapter = new RecipeListAdapter(getContext(), R.layout.recipe_list_row, rlist);
             //TODO
             rListView.setAdapter(rListAdapter);
         }
+
     }
 }
-
