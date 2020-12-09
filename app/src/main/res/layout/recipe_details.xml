@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:textAlignment="gravity"
     android:background="@color/colorBackground">
 
     <LinearLayout
@@ -25,15 +26,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="15dp"
-                android:textColor="@color/colorText"
-                android:textSize="28sp" />
+                android:textColor="@color/material_on_background_emphasis_high_type"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/recipe_ingredient"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="15dp"
-                android:textColor="@color/colorText"
+                android:textColor="@color/material_on_surface_emphasis_high_type"
                 android:textSize="16sp"/>
 
             <TextView
@@ -41,8 +42,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="15dp"
-                android:textColor="@color/colorText"
-                android:textSize="16sp"/>
+                android:textColor="@color/material_on_background_emphasis_high_type"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -50,9 +51,10 @@
             android:id="@+id/fav_button"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/recipe_fav"
-            android:background="@drawable/round_button"/>
+            android:layout_gravity="left"
+            android:background="@drawable/round_button"
+            android:scaleType="fitStart"
+            android:src="@drawable/recipe_fav" />
 
     </LinearLayout>
 
@@ -70,8 +72,9 @@
 
         <ListView
             android:id="@+id/recipe_list"
+            style="@style/Widget.AppCompat.ListView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </RelativeLayout>
 

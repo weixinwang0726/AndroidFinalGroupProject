@@ -103,7 +103,7 @@
     <string name="r_search_keyword">Enter a name or an ingredient</string>
     <string name="r_author">Author: Jingshan Guan. Version: 1.0</string>
     <string name="r_my_fav_btn">My favourite recipe</string>
-    <string name="r_gobacktoStartpage">Go back to Start page</string>
+    <string name="r_gobacktoStartpage">Main Page</string>
 
     <string name="covid_switch_message">Record saved</string>
     <string name="covid_undo">UNDO</string>
@@ -129,7 +129,7 @@
     <string name="r_recipe_loading">Loading recipe</string>
 
     <string name="covid_title">COVID-19 Detail</string>
-
+    <string name="r_already_saved">Recipe already saved in favourite</string>
 
 
 </resources>

@@ -134,7 +134,7 @@
     <string name="r_recipe_loading">菜谱加载中</string>
 
     <string name="covid_title">新冠案例详情</string>
-
+    <string name="r_already_saved">菜谱已被收藏过</string>
 
 
 </resources>

@@ -41,19 +41,19 @@ import java.util.ArrayList;
 
 //class for user to load searched recipe, add to favourite, and delete from favourite
 public class RecipeUserActivity extends Fragment {
-
+   //widgets
     private TextView textTitle, textIngredient, textURL;
     private ListView rListView;
     private RecipeListAdapter rListAdapter;
     private ProgressBar pbar;
     private ImageButton favbtn;
+
+
     private RecipeFunction recipeData;
     //parameters for searching recipe through API
     private String rTitle, rIngredient, rURL;
 
     //create an Arraylist of Recipe object
-
-    //ArrayList<String> imcompatible with <Recipe>
     private ArrayList<Recipe> rlist = new ArrayList<Recipe>();
     private Snackbar SnackBar;
 
@@ -80,7 +80,6 @@ public class RecipeUserActivity extends Fragment {
         recipeData = ((RecipeActivity) getActivity()).getDataSource();
 
 
-        //TODO
 
         rTitle = getArguments().getString("title");   //the search term for name or ingredient entered
         rIngredient = getArguments().getString("ingredient"); //ingredients that the recipe must include.
@@ -89,17 +88,15 @@ public class RecipeUserActivity extends Fragment {
         textTitle.setText("Recipe Title: " + rTitle);
         textIngredient.setText("Ingredients: " + rIngredient);
 
-
         //obtain recipe URL,  search for the recipe using name or ingredient
-        // i.e   http://www.recipepuppy.com/api/?i=egg&q=omelet&p=3%22   for "egg" "omelet"
-        String url = "http://www.recipepuppy.com/api/?i=" + rIngredient + "&q=" + rTitle + "&p=3";
 
+        String url = "http://www.recipepuppy.com/api/?i=" + rIngredient + "&q=" + rTitle + "&p=3";
         SearchRecipe sr = new SearchRecipe();
         sr.execute(url);
 
-
         //when click on the recipe url, launch the browse to open the url.
 
+        //
         rListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -114,10 +111,11 @@ public class RecipeUserActivity extends Fragment {
             @Override
             public void onClick(View v) {
                 Recipe r = new Recipe(rTitle, rIngredient, url);
-                if (recipeData.isRecipeNotExists(r)) { //if the recipe has not added to favourite
+                if (recipeData.isRecipeNotExists(r)) { //whether the recipe has not added to favourite
                     recipeData.addToFavoriteList(r);//add to favourite
-                    Snackbar.make(v, rTitle + getString(R.string.r_fav_added), Snackbar.LENGTH_LONG)  //alert user, recipe has added to favourite
-                            //  XXXXX recipe added to Favourite
+                    Snackbar.make(v, rTitle + getString(R.string.r_fav_added), Snackbar.LENGTH_LONG)
+                            //alert user, recipe has added to favourite
+
 
                             .setAction(getString(R.string.cancel), new View.OnClickListener() {
                                 @Override
@@ -127,14 +125,14 @@ public class RecipeUserActivity extends Fragment {
                                 }
                             }).show();
                 } else { //recipe already saved in favourite
-                    Toast.makeText(getContext(), getString(R.string.toast_message), Toast.LENGTH_LONG).show();  //alert user recipe already exists.
+                    Toast.makeText(getContext(), getString(R.string.r_already_saved), Toast.LENGTH_LONG).show();  //alert user recipe already exists.
                 }
             }
         });
         return view;
     }
 
-    // load recipe details in ListView
+    // load recipe details in ListView using AsyncTask
     private class SearchRecipe extends AsyncTask<String, Integer, String> {
 
         @Override
@@ -189,8 +187,6 @@ public class RecipeUserActivity extends Fragment {
 
 
                 //use XMLPullParse
-
-
                 XmlPullParserFactory factory = null;
                 try {
                     factory = XmlPullParserFactory.newInstance();
@@ -272,7 +268,6 @@ public class RecipeUserActivity extends Fragment {
                             e.printStackTrace();
                         }
 
-
                     }
 
 
@@ -295,7 +290,7 @@ public class RecipeUserActivity extends Fragment {
         public void onPostExecute(String s) {
             pbar.setVisibility(View.INVISIBLE);
             rListAdapter = new RecipeListAdapter(getContext(), R.layout.recipe_list_row, rlist);
-            //TODO
+
             rListView.setAdapter(rListAdapter);
         }
 
