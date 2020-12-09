@@ -67,7 +67,7 @@
     <string name="r_search_keyword">Enter a name or an ingredient</string>
     <string name="r_author">Author: Jingshan Guan. Version: 1.0</string>
     <string name="r_my_fav_btn">My favourite recipe</string>
-    <string name="r_gobacktoStartpage">Goback to Start page</string>
+    <string name="r_gobacktoStartpage">Main Page</string>
 
     <string name="covid_toast_message">Author: Ziyin Yan.</string>
     <string name="btn_to_Covid19Case">"Covid-19  Case "</string>

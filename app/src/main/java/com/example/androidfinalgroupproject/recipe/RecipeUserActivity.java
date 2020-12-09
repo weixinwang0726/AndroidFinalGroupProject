@@ -89,7 +89,7 @@ public class RecipeUserActivity extends Fragment {
         textIngredient.setText("Ingredients: " + rIngredient);
 
         //obtain recipe URL,  search for the recipe using name or ingredient
-        // i.e   http://www.recipepuppy.com/api/?i=egg&q=omelet&p=3%22   for "egg" "omelet"
+
         String url = "http://www.recipepuppy.com/api/?i=" + rIngredient + "&q=" + rTitle + "&p=3";
         SearchRecipe sr = new SearchRecipe();
         sr.execute(url);
