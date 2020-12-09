@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
@@ -64,13 +65,6 @@ public class RecipeActivity extends AppCompatActivity   {
         //getting ready for user input data
         RecipeFunction user = new RecipeFunction(this);
         user.open();
-/*        // get reference for SharedPreferences
-        String key = getString(R.string.r_search_keyword);
-        prefs = getSharedPreferences(key, Context.MODE_PRIVATE);
-
-        // get reserved email from SharedPreferences
-        key = getString(R.string.r_search_keyword);
-        String keyword= prefs.getString(key, ""); ;*/
 
 
         // Using fragment to access database
@@ -89,14 +83,14 @@ public class RecipeActivity extends AppCompatActivity   {
                         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(navigationView.getContext());
 
                         alertDialogBuilder.setTitle("HELP")
-                                .setMessage(R.string.tm_help_content)
+                                .setMessage(R.string.r_help_content)
                                 .setPositiveButton(R.string.r_OK, (c, arg) -> {
                                 })
                                 .create().show();
 
                         break;
 
-
+                    //click Search to navigate to search function
 
                     case R.id.search:
                         getSupportFragmentManager()
@@ -115,7 +109,8 @@ public class RecipeActivity extends AppCompatActivity   {
                                 .commit();
                         break;
 
-                    case R.id.main_page:  //go back to main page
+                    case R.id.main_page:
+                        //go back to main page
                         startActivity(new Intent(RecipeActivity.this, MainActivity.class));
                         break;
 
@@ -133,16 +128,12 @@ public class RecipeActivity extends AppCompatActivity   {
 
 
                 }
-
+                rDrawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             }
 
         });
-/*        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.main_content, page)
-                .addToBackStack(null)
-                .commit();*/
+
 
     }
 

@@ -9,15 +9,19 @@ package com.example.androidfinalgroupproject.recipe;
 
 public class Recipe {
 
-/**
- * @param  title,the title of the recipe
- * @param  ingredient, the ingredient(s) of the recipe
- * @param  url, the url of the specific recipe
- */
+    /**
+     * Constructor of recipe to initialize title, ingredients and url
+     *
+     * @param dataBaseId the database id
+     * @param recipe the title
+     * @param ingredient the ingredient
+     * @param url the web address for recipe
+     */
 
-    private String title;
-    private String ingredient;
-    private String url;
+    long dataBaseId;
+    String title;
+    String ingredient;
+    String url;
 
     public Recipe() {
     }
@@ -28,15 +32,49 @@ public class Recipe {
         this.url = url;
     }
 
-   // setters and getters
-    public void  setTitle(String title){this.title = title;}
-    public String getTitle(){return title; }
+    /**
+     * *4-argument Constructor of recipe to initialize title, ingredient and url
+     *
+     * @param id         the id
+     * @param recipe     the title
+     * @param ingredient the ingredient
+     * @param url        the web address for recipe
+     */
+    public Recipe(Long id, String recipe, String ingredient, String url) {
+        this.dataBaseId = id;
+        this.title = recipe;
+        this.ingredient = ingredient;
+        this.url = url;
+    }
 
-    public void setIngredient(String ingredient){this.ingredient = ingredient;}
-    public String getIngredient(){return ingredient;}
+    // setters and getters
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-    public void setUrl(String url){this.url= url;}
-    public String getUrl(){return url;}
+    public String getTitle() {
+        return title;
+    }
+
+    public void setIngredient(String ingredient) {
+        this.ingredient = ingredient;
+    }
+
+    public String getIngredient() {
+        return ingredient;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public long getDataBaseId() {
+        return dataBaseId;
+    }
 
 }
 

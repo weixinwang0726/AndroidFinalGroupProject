@@ -33,7 +33,7 @@ public class RecipeFavActivity extends Fragment {
         favListView = (ListView) view.findViewById(R.id.r_fav_list);
         input = ((RecipeActivity) getActivity()).getDataSource();
 
-        //get all favourited recipes in to list
+        //get all saved to favourite recipes into a list
         List<Recipe> fav_recipe = input.getAllFavoriteRecipe();
         rAdapter = new RecipeListAdapter(getContext(), R.layout.recipe_list_row, fav_recipe);
         favListView.setAdapter(rAdapter);
