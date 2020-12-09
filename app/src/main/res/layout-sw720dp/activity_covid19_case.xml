@@ -12,7 +12,8 @@
         android:id="@+id/covidToolBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="@string/covid_caseText" />
+        app:title="@string/covid_caseText"
+        android:background="@color/white" />
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/covid_drawer_layout"
@@ -23,9 +24,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:background="@drawable/covid"
-
             android:orientation="vertical">
 
             <ProgressBar
@@ -41,7 +40,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/covid_caseText"
-                android:textSize="18dp" />
+                android:textColor="#FFFFFF"
+                android:textSize="20dp" />
 
 
             <TextView
@@ -49,8 +49,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/covid_search"
-
-                android:textSize="18dp" />
+                android:textColor="#FFFFFF"
+                android:textSize="20dp" />
 
 
             <LinearLayout
@@ -65,16 +65,19 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:backgroundTint="@android:color/white"
-                    android:hint="@string/covid_country_hint" />
+                    android:hint="@string/covid_country_hint"
+                    android:textColor="#FAFDFD"
+                    android:textColorHint="#FAFDFD" />
 
                 <EditText
                     android:id="@+id/date_input"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:gravity="center"
                     android:backgroundTint="@android:color/white"
-                    android:hint="@string/covid_date_hint" />
+                    android:hint="@string/covid_date_hint"
+                    android:textColor="#FAFDFD"
+                    android:textColorHint="#FAFDFD" />
 
             </LinearLayout>
 
@@ -82,7 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:weightSum="3">
 
                 <Button
                     android:id="@+id/search_btn"
@@ -96,8 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/covid_save_btn"
-                    android:layout_gravity="center_vertical"/>
+                    android:text="@string/covid_save_btn" />
 
             </LinearLayout>
 
@@ -115,6 +117,13 @@
                     android:id="@+id/database_list_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
+
+                <FrameLayout
+                    android:layout_weight="1"
+                    android:id="@+id/covidfragmentLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/panelBackground" />
             </LinearLayout>
 
         </LinearLayout>
