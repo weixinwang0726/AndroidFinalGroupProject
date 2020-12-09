@@ -84,7 +84,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_covid19_case);
 
-        boolean isTablet = findViewById(R.id.covidfragmentLocation) != null;
+        boolean isTablet = findViewById(R.id.province_list_view) != null;
 
         /*
          set toolbar:
@@ -159,7 +159,6 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
                      loadDataFromDatabase();
                  });
 
-
         /*
             display province details
          */
@@ -177,12 +176,12 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
 
             if(isTablet)
            {
-
                 dFragment.setArguments(d);
+                //load the fragment
                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.covidfragmentLocation, dFragment)
-                        .commit();
+                       .beginTransaction()
+                       .replace(R.id.covidfragmentLocation, dFragment)
+                       .commit();
            }
             else
             {
@@ -354,18 +353,15 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         ProvinceOpener provinceOpener = new ProvinceOpener(this);
 
         db = provinceOpener.getWritableDatabase();
-       // provinceOpener.onDowngrade(db,1,1);
+//       provinceOpener.onDowngrade(db,1,1);
         for (Province result : resultList)
         {
             //add to the database
             ContentValues newRowValues = new ContentValues();
-            //add COUNTRY column:
+            //add all columns:
             newRowValues.put( ProvinceOpener.COL_COUNTRY, result.getCountry() );
-            //add DATE column:
             newRowValues.put( ProvinceOpener.COL_DATE, result.getDate() );
-            //add PROVINCE column:
             newRowValues.put( ProvinceOpener.COL_PROVINCE, result.getProvince() );
-            //add CASE column:
             newRowValues.put( ProvinceOpener.COL_CASE, result.getCase() );
 
             //insert into the database:
@@ -373,7 +369,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         }
     }
     /*
-     * delete record in database
+     * delete data in database
      */
     private void deleteData(Database i){
         db.delete( ProvinceOpener.TABLE_NAME, ProvinceOpener.COL_COUNTRY + "= ? and " + ProvinceOpener.COL_DATE + "= ?",
@@ -382,13 +378,10 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
 
     private void addData(Database i){
         ContentValues newRowValues = new ContentValues();
-        //add COUNTRY column:
+        //add COUNTRY columns:
         newRowValues.put( ProvinceOpener.COL_COUNTRY, i.getCountry() );
-        //add DATE column:
         newRowValues.put( ProvinceOpener.COL_DATE, i.getDate() );
-        //add PROVINCE column:
         newRowValues.put( ProvinceOpener.COL_PROVINCE, i.getProvince() );
-        //add CASE column:
         newRowValues.put( ProvinceOpener.COL_CASE, i.getCovidcase());
         long insert = db.insert(ProvinceOpener.TABLE_NAME, null,newRowValues);
     }

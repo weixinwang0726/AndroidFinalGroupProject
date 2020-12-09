@@ -70,8 +70,8 @@
     <string name="r_gobacktoStartpage">Goback to Start page</string>
 
     <string name="covid_toast_message">Author: Ziyin Yan.</string>
-    <string name="btn_to_Covid19Case">"Covid-19 "</string>
-    <string name="covid_caseText">Covid-19  Data</string>
+    <string name="btn_to_Covid19Case">"Covid-19  Case "</string>
+    <string name="covid_caseText">"Covid-19  "</string>
     <string name="covid_search">Enter a country name and date(YYYY-MM-DD) for searching</string>
     <string name="covid_country_hint">Country</string>
     <string name="covid_date_hint">Date</string>
@@ -103,7 +103,7 @@
     <string name="choice3">"About "</string>
     <string name="choice4">Help</string>
 
-    <string name="covidtitle">Covid-19 Data</string>
+    <string name="covidtitle">Covid-19 Case Detail</string>
     <string name="covidauthor">Author: Ziyin Yan</string>
     <string name="covidversion">Version No.: 1.0 </string>
 
@@ -119,7 +119,7 @@
     <string name="r_help">HELP</string>
     <string name="r_help_content">Welcome to Recipe Search! You can enter a name or ingredient to search for the recipes. You can save your favourite recipes and delete recipe from your favourites.</string>
     <string name="r_OK">OK</string>
-
+    <string name="covid_title">COVID-19 Detail</string>
 
 
 </resources>
