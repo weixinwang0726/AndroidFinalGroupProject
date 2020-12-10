@@ -353,7 +353,9 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         ProvinceOpener provinceOpener = new ProvinceOpener(this);
 
         db = provinceOpener.getWritableDatabase();
-       //provinceOpener.onDowngrade(db,1,1);
+
+         //provinceOpener.onDowngrade(db,1,1);
+
         for (Province result : resultList)
         {
             //add to the database
@@ -402,7 +404,9 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         String [] columns = {ProvinceOpener.COL_COUNTRY,ProvinceOpener.COL_COUNTRY_CODE,
                 ProvinceOpener.COL_LATITUDE,ProvinceOpener.COL_LONGGITUDE,
                 ProvinceOpener.COL_DATE, ProvinceOpener.COL_PROVINCE, ProvinceOpener.COL_CASE_NUMBER
+
         };
+
         String[] args = {database.getCountry(), database.getDate()};
         Cursor results = db.query(false, ProvinceOpener.TABLE_NAME, columns, ProvinceOpener.COL_COUNTRY + "=?" + " and "  +
                 ProvinceOpener.COL_DATE + "=?", args,null, null, null, null);
