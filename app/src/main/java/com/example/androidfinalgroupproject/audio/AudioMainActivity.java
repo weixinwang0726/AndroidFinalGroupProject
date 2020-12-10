@@ -25,8 +25,15 @@ import com.example.androidfinalgroupproject.ticketmaster.TicketMasterActivity;
 import com.google.android.material.navigation.NavigationView;
 
 /**
- * 只使用一个activity，多个fragment
+ * Course Name: CST2335_20F_22 Graphical Interface Programming (Android)
+ * Class name:AudioMainActivity.java
+ * Final Project The Audio Database api Topic Launching Activity
+ * @author Yanan Cheng
+ * @version 1.0, 11/19/2020
+ *  Use only one activity and many fragments
  */
+
+
 public class AudioMainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
@@ -38,13 +45,19 @@ public class AudioMainActivity extends AppCompatActivity {
     private boolean isTablet;
     private AlbumDataSource mDataSource;
 
+    /**
+     * User enters artist name, then AsyncTask use the information
+     * open a new Activity and display detail data in it.
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_audio_main);
         page = new SearchMainPage();
 
-        // 初始化各个 Initial widget
+        //Initial widget
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -55,16 +68,15 @@ public class AudioMainActivity extends AppCompatActivity {
         mActionBarDrawerToggle.syncState();
         isTablet = findViewById(R.id.search_page) != null;
 
-        // 初始化数据库
+        // initial database
         mDataSource = new AlbumDataSource(this);
         mDataSource.open();
 
-        // Set NavigationDrawer的点击响应事件
+        // Set NavigationDrawer
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    // 根据menu的id设置对应的响应事件
                     case R.id.back_to_main:
                         startActivity(new Intent(AudioMainActivity.this, MainActivity.class));
                         break;
@@ -99,7 +111,6 @@ public class AudioMainActivity extends AppCompatActivity {
             }
         });
 
-        // Loading Google searching page
         if (isTablet) {
             getSupportFragmentManager()
                     .beginTransaction()
@@ -115,14 +126,14 @@ public class AudioMainActivity extends AppCompatActivity {
         }
     }
 
-    // 添加toolbar按钮
+    // set toolbar buttons
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.audio_menu, menu);
         return true;
     }
 
-    // 设置toolbar按钮的点击事件
+    // set toolbar activities
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -158,7 +169,7 @@ public class AudioMainActivity extends AppCompatActivity {
                 }).create().show();
     }
 
-    // 使其他fragment能访问数据库
+    // Use other fragment ask for data source from album data source
     public AlbumDataSource getDataSource() {
         return mDataSource;
     }

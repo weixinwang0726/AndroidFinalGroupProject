@@ -31,6 +31,15 @@ public class FavoriteListPage extends Fragment {
     private AlbumListAdapter mAdapter;
     private AlbumDataSource mDataSource;
 
+    /**
+     * favorite list can read database from all albums,
+     * user can delete albums from favorite list
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,7 +49,7 @@ public class FavoriteListPage extends Fragment {
         mListView = (ListView) view.findViewById(R.id.favorite_list);
         mDataSource = ((AudioMainActivity) getActivity()).getDataSource();
 
-        // 从数据库里取出所有albums
+        // get database from all albums
         List<Album> albums = mDataSource.getAllFavoriteAlbums();
         mAdapter = new AlbumListAdapter(getContext(), R.layout.album_list_row, albums);
         mListView.setAdapter(mAdapter);
@@ -64,7 +73,7 @@ public class FavoriteListPage extends Fragment {
             }
         });
 
-        // 长按删除选中的album
+        // long click the album which one need to delete
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
