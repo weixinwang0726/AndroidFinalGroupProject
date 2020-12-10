@@ -15,6 +15,13 @@
         app:title="@string/covid_caseText"
         android:background="@color/white" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/is_table"
+        android:visibility="invisible"
+        ></TextView>
+
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/covid_drawer_layout"
         android:layout_width="match_parent"
