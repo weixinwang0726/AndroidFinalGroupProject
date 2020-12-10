@@ -29,8 +29,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.androidfinalgroupproject.MainActivity;
 import com.example.androidfinalgroupproject.R;
+import com.example.androidfinalgroupproject.audio.AudioMainActivity;
 import com.example.androidfinalgroupproject.common.Const;
+import com.example.androidfinalgroupproject.covid19.Covid19Case;
+import com.example.androidfinalgroupproject.recipe.RecipeActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
@@ -96,7 +100,7 @@ public class TicketMasterActivity extends AppCompatActivity implements Navigatio
         ListView cityListView = findViewById(R.id.event_list_view);
         cityListView.setAdapter(citiesAdapter = new EventsAdapter());
 
-        Button helpBtn = navigationView.getHeaderView(0).findViewById(R.id.help_btn);
+        TextView helpBtn = navigationView.getHeaderView(0).findViewById(R.id.help_btn);
         helpBtn.setOnClickListener(click -> {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(navigationView.getContext());
 
@@ -203,11 +207,6 @@ public class TicketMasterActivity extends AppCompatActivity implements Navigatio
         }
     }
 
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
-    }
     private class EventsAdapter extends BaseAdapter {
 
         @Override
@@ -261,6 +260,9 @@ public class TicketMasterActivity extends AppCompatActivity implements Navigatio
     }
 
 
+    /**
+     * async task class.
+     */
     private class EventsQuery extends AsyncTask<String, Integer, String> {
 
         private List<Event> eventResults = new ArrayList();
@@ -369,4 +371,33 @@ public class TicketMasterActivity extends AppCompatActivity implements Navigatio
         ArrayList<Event> favoEventList = eventOpener.printCursor(favoCursor);
         return favoEventList;
     }
+
+    /**
+     * this is the left menu bar.
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switchBetweenActivity(item.getItemId());
+        return false;
+    }
+    public void switchBetweenActivity(int id) {
+        switch (id){
+            case R.id.audio_search:
+                startActivity(new Intent(TicketMasterActivity.this, AudioMainActivity.class));
+                break;
+            case R.id.ticket_master:
+                startActivity(new Intent(TicketMasterActivity.this, TicketMasterActivity.class));
+                break;
+            case R.id.covid19:
+                startActivity(new Intent(TicketMasterActivity.this, Covid19Case.class));
+                break;
+
+            case R.id.recipe:
+                startActivity(new Intent(TicketMasterActivity.this, RecipeActivity.class));
+                break;
+        }
+    }
+
 }
