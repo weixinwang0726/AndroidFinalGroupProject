@@ -84,7 +84,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_covid19_case);
 
-        boolean isTablet = findViewById(R.id.province_list_view) != null;
+        boolean isTablet = findViewById(R.id.is_table) != null;
 
         /*
          set toolbar:
