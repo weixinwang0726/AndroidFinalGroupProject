@@ -17,6 +17,12 @@ import com.example.androidfinalgroupproject.R;
 
 import java.util.List;
 
+/**
+ * @Author:Jingshan Guan
+ * @Date: 2020/12/05
+ * @Version: 1.0
+ */
+
 public class RecipeFavActivity extends Fragment {
 
 
