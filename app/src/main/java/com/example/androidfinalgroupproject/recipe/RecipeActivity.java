@@ -40,7 +40,7 @@ public class RecipeActivity extends AppCompatActivity   {
     //object to use recipe search function
     private RecipeUserActivity user;
     private RecipeFunction input;
-    private AlbumDataSource mDataSource;
+
 
 
     @Override
@@ -63,8 +63,8 @@ public class RecipeActivity extends AppCompatActivity   {
 
 
         //getting ready for user input data
-        RecipeFunction user = new RecipeFunction(this);
-        user.open();
+        input = new RecipeFunction(this);
+        input.open();
 
 
         // Using fragment to access database

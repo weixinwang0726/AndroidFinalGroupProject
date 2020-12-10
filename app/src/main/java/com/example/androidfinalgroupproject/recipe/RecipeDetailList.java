@@ -37,8 +37,12 @@ public class RecipeDetailList extends ArrayAdapter<String> {
         String recipe = getItem(position);
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View view = inflater.inflate(resource, parent, false);
-        TextView textView = (TextView) view.findViewById(R.id.recipe_title);  //put text into recipe title textView
+
+        //put text into recipe title
+
+        TextView textView = (TextView) view.findViewById(R.id.recipe_title);
         textView.setText(recipe);
+
         return view;
     }
 

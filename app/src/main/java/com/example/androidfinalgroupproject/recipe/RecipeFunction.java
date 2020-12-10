@@ -46,8 +46,8 @@ public class RecipeFunction {
 
     public boolean isRecipeNotExists(Recipe r) {
         Cursor cursor = recipeSQLiteDatabase.query(RecipeOpener.TABLE_NAME, allColumns,
-                RecipeOpener.TITLE + "=" + "'" + r.getTitle() + "'",
-                null, null, null, null);
+                RecipeOpener.TITLE + "=?",
+                new String[]{r.getTitle()}, null, null, null);
         boolean result = (cursor.getCount() == 0);
         cursor.close();
         return result;
@@ -56,8 +56,8 @@ public class RecipeFunction {
 
     //remove selected recipe from favourite table
     public void deleteSelectedRecipe(Recipe r) {
-        String recipeselected = r.getUrl();
-        recipeSQLiteDatabase.delete(RecipeOpener.TABLE_NAME, RecipeOpener.TITLE + "=" + "'" + recipeselected + "'", null);
+        String recipeselected = r.getTitle();
+        recipeSQLiteDatabase.delete(RecipeOpener.TABLE_NAME, RecipeOpener.TITLE + "=?", new String[]{recipeselected});
     }
 
     //get all saved recipes to a list
