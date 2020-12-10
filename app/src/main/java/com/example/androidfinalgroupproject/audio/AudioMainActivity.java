@@ -154,15 +154,16 @@ public class AudioMainActivity extends AppCompatActivity {
         return true;
     }
 
+
     private void displayHelp() {
-        String title = "Audio Search ";
-        String line1 = "This app will help you search singer";
-        String line2 = "And you could save your favorite album";
-        String line3 = "Created by Yanan Cheng";
+        String title = getString(R.string.hdisplay1);
+        String line1 = getString(R.string.hdisplay2);
+        String line2 = getString(R.string.hdispaly3);
+        String line3 = getString(R.string.hdisplay4);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(AudioMainActivity.this);
         alertDialogBuilder.setTitle(title)
                 .setMessage(line1 + " \n" + line2 + " \n" + line3)
-                .setNegativeButton("Close", (click, arg) -> {
+                .setNegativeButton(R.string.hdisplay5, (click, arg) -> {
                     //You can add extra layout elements:
                     //.setView(getLayoutInflater().inflate(R.layout.row_layout, null) )
 
