@@ -80,8 +80,11 @@ public class TicketMasterActivity extends AppCompatActivity implements Navigatio
         DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
                 drawer, myToolbar, R.string.open, R.string.close);
+
+
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
         boolean isTablet =    findViewById(R.id.fragmentLocation) != null;
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setItemIconTintList(null);
