@@ -116,7 +116,6 @@
             android:layout_height="wrap_content"
             android:text="@string/tm_tx_url"
             android:textSize="16dp"
-
             android:textColor="#FFFFFF"/>
 
         <TextView
@@ -124,7 +123,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16dp"
-android:autoLink="all"
+            android:autoLink="all"
             android:textAlignment="textStart"
             android:textColor="#FFFFFF"/>
 

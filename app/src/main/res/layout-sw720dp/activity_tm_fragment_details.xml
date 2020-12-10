@@ -145,8 +145,8 @@
 
         <ImageView
             android:id="@+id/tm_tw_image_url"
-            android:layout_width="480dp"
-            android:layout_height="400dp"
+            android:layout_width="320dp"
+            android:layout_height="240dp"
             android:textSize="16dp"
 
             android:textAlignment="textStart"
