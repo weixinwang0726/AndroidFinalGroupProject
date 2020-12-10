@@ -57,7 +57,7 @@ public class RecipeFavActivity extends Fragment {
 
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.main_content, page)
+                        .replace(R.id.recip_headly, page)
                         .addToBackStack(null)
                         .commit();
             }
@@ -74,7 +74,7 @@ public class RecipeFavActivity extends Fragment {
                 builder.setTitle(getString(R.string.r_delete_alert) + r.getTitle())
                         .setMessage(getString(R.string.r_fave_deleted))
                         .setCancelable(false)
-                        .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+                        .setPositiveButton(getString(R.string.r_OK), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //delete

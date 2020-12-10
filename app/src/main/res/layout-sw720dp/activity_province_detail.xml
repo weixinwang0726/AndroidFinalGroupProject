@@ -43,26 +43,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/covid_countryCode"
-                android:textSize="16dp"
-                android:textColor="#FFFFFF"/>
-
-            <TextView
-                android:id="@+id/countrycode_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textColor="#FFFFFF"/>
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -127,47 +107,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/covid_latitude"
-                android:textSize="16dp"
-                android:textColor="#FFFFFF"/>
-
-            <TextView
-                android:id="@+id/latitude_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textColor="#FFFFFF"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/covid_longitude"
-                android:textSize="16dp"
-                android:textColor="#FFFFFF"/>
-
-            <TextView
-                android:id="@+id/longitude_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textColor="#FFFFFF"/>
-
-        </LinearLayout>
 
     </LinearLayout>
 </FrameLayout>

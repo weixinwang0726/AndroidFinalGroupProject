@@ -27,7 +27,7 @@
         android:id="@+id/audio_help"
         android:icon="@drawable/ic_help"
         android:orderInCategory="400"
-        android:title="@string/choice4"
+        android:title="help"
         app:showAsAction="always" />
 
 </menu>

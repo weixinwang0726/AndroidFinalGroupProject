@@ -80,13 +80,15 @@ public class RecipeUserActivity extends Fragment {
         recipeData = ((RecipeActivity) getActivity()).getDataSource();
 
 
-
         rTitle = getArguments().getString("title");   //the search term for name or ingredient entered
         rIngredient = getArguments().getString("ingredient"); //ingredients that the recipe must include.
+        rURL = getArguments().getString("url"); //ingredients that the recipe must include.
 
 
         textTitle.setText("Recipe Title: " + rTitle);
         textIngredient.setText("Ingredients: " + rIngredient);
+        textURL.setText("url " + rURL);
+
 
         //obtain recipe URL,  search for the recipe using name or ingredient
 
@@ -110,7 +112,7 @@ public class RecipeUserActivity extends Fragment {
         favbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Recipe r = new Recipe(rTitle, rIngredient, url);
+                Recipe r = new Recipe(rTitle, rIngredient, rURL);
                 if (recipeData.isRecipeNotExists(r)) { //whether the recipe has not added to favourite
                     recipeData.addToFavoriteList(r);//add to favourite
                     Snackbar.make(v, rTitle + getString(R.string.r_fav_added), Snackbar.LENGTH_LONG)

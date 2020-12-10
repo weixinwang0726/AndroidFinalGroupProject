@@ -15,6 +15,9 @@ import com.example.androidfinalgroupproject.R;
  * @Author: Yanan Cheng
  * @Date: 2020/12/6 21:34
  * @Version: 1.0
+ *When user lick on listview of main activity
+ *  the detail data of the clicked audio search data
+ *  will be show on the layout of EmptyPage
  */
 public class EmptyPage extends Fragment {
     @Nullable

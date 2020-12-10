@@ -48,8 +48,15 @@ public class SearchMainPage extends Fragment {
     private ListView mListView;
     private AlbumListAdapter mAdapter;
     private SharedPreferences mSharedPreferences;
-
     private List<Album> albumList = new ArrayList<>();
+
+    /**
+     * List all the albums
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
 
     @Nullable
     @Override
@@ -58,13 +65,13 @@ public class SearchMainPage extends Fragment {
 
         ((AudioMainActivity) getActivity()).getToolbar().setTitle(getString(R.string.audio_search));
 
-        // 初始化widget
+        // initial widget
         mEditText = (EditText) view.findViewById(R.id.search_edit_text);
         mButton = (Button) view.findViewById(R.id.search_button);
         mProgressBar = (ProgressBar) view.findViewById(R.id.progress_audio);
         mListView = (ListView) view.findViewById(R.id.album_list);
 
-        // 加载上次输入记录
+        // loading last time data
         mSharedPreferences = getContext().getSharedPreferences("sp", Context.MODE_PRIVATE);
         mEditText.setText(mSharedPreferences.getString("Artist", ""));
 
@@ -72,7 +79,6 @@ public class SearchMainPage extends Fragment {
             mListView.setAdapter(mAdapter);
         }
 
-        // 设置搜索按钮
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,13 +91,13 @@ public class SearchMainPage extends Fragment {
                 String api = "https://www.theaudiodb.com/api/v1/json/1/searchalbum.php?s="
                         + mEditText.getText().toString().trim();
                 SearchArtist searchArtist = new SearchArtist();
-                // 传入url开始加载数据
+                // loading url database
                 searchArtist.execute(api);
                 ((AudioMainActivity) getActivity()).setPage(getSearchMainPage());
             }
         });
 
-        // 点击album列表任意一行跳转到对应的album detail界面
+        // click album any row of list to the album detail fragment
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -113,6 +119,7 @@ public class SearchMainPage extends Fragment {
         return view;
     }
 
+    // hide keyboard
     private void closeKeyboard() {
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm.isActive() && getActivity().getCurrentFocus() != null) {
@@ -123,7 +130,7 @@ public class SearchMainPage extends Fragment {
     }
 
     /**
-     * 记录用户上次输入的信息
+     * Record the information that the user last entered
      */
     private void saveUserType() {
         SharedPreferences.Editor editor = mSharedPreferences.edit();
@@ -131,7 +138,9 @@ public class SearchMainPage extends Fragment {
         editor.commit();
     }
 
-    // 后台处理JSON数据
+    /**JSON data is processed in the background
+     *
+     */
     private class SearchArtist extends AsyncTask<String, Integer, String> {
 
         @Override
@@ -157,7 +166,6 @@ public class SearchMainPage extends Fragment {
                     albumList.add(album);
                     progress += 100 / jsonArray.length();
                     publishProgress(progress);
-                    // 防止进度条走动太快，加上了手动延时
                     Thread.sleep(50);
                 }
 
@@ -173,7 +181,10 @@ public class SearchMainPage extends Fragment {
             mProgressBar.setProgress(values[0]);
         }
 
-        // 数据加载完毕，显示出来
+        /**display
+         *
+         * @param s
+         */
         @Override
         protected void onPostExecute(String s) {
             mProgressBar.setVisibility(View.INVISIBLE);

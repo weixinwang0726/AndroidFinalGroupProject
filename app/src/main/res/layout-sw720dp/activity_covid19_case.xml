@@ -75,6 +75,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:backgroundTint="@android:color/white"
+                    android:gravity="center"
                     android:hint="@string/covid_date_hint"
                     android:textColor="#FAFDFD"
                     android:textColorHint="#FAFDFD" />
@@ -85,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:weightSum="2">
 
                 <Button
                     android:id="@+id/search_btn"
@@ -99,6 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/covid_save_btn" />
 
             </LinearLayout>
@@ -132,12 +134,15 @@
             android:id="@+id/nav_view"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:background="#FFFFFF"
-            android:fitsSystemWindows="true"
             app:headerLayout="@layout/header_covid"
             app:itemTextColor="#000000"
-            app:menu="@menu/covid_menu" >
+
+            android:layout_gravity="start"
+            app:menu="@menu/covid_menu"
+            android:background="#FFFFFF"
+            android:fitsSystemWindows="true">
+
+
 
         </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>

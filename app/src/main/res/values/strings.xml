@@ -90,8 +90,8 @@
     <string name="covid_latitude">Latitude: </string>
     <string name="covid_longitude">Longitude: </string>
 
-    <string name="choice1">Go to Main Page </string>
-    <string name="choice2">"Database "</string>
+    <string name="choice1">"Go to Main Page "</string>
+    <string name="choice2">Database</string>
     <string name="choice3">About</string>
     <string name="choice4">Help </string>
 
@@ -130,6 +130,13 @@
 
     <string name="covid_title">COVID-19 Detail</string>
     <string name="r_already_saved">Recipe already saved in favourite</string>
+    <string name="hide">hide</string>
+    <string name="help">Help</string>
+    <string name="hdisplay1">\"Audio Search \"</string>
+    <string name="hdisplay2">This app will help you search singer</string>
+    <string name="hdispaly3">And you could save your favorite album</string>
+    <string name="hdisplay4">Created by Yanan Cheng</string>
+    <string name="hdisplay5">Close</string>
 
 
 </resources>

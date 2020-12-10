@@ -10,6 +10,10 @@ public class Album {
     private String artist;
     private String strAlbum;
 
+    /**
+     * it includes id, song name, and artist who sings the song
+     */
+
     public Album() {
     }
 

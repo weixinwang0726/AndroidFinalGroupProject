@@ -150,14 +150,14 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         /*
          save button
          */
-         Button saveBtn = findViewById(R.id.save_btn);
-         saveBtn.setOnClickListener(click -> {
-                     String message = null;
-                     saveData(provinceList);
-                     message = "Save search results";
-                     Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-                     loadDataFromDatabase();
-                 });
+        Button saveBtn = findViewById(R.id.save_btn);
+        saveBtn.setOnClickListener(click -> {
+            String message = null;
+            saveData(provinceList);
+            message = "Save search results";
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            loadDataFromDatabase();
+        });
 
         /*
             display province details
@@ -175,20 +175,20 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
             d.putString("Lon", province.getLongitude());
 
             if(isTablet)
-           {
+            {
                 dFragment.setArguments(d);
                 //load the fragment
-               getSupportFragmentManager()
-                       .beginTransaction()
-                       .replace(R.id.covidfragmentLocation, dFragment)
-                       .commit();
-           }
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.covidfragmentLocation, dFragment)
+                        .commit();
+            }
             else
             {
                 Intent nextActivity = new Intent(Covid19Case.this, ProvinceDetailActivity.class);
                 nextActivity.putExtras(d);
                 startActivity(nextActivity);
-             }
+            }
         });
 
         databaseListView.setOnItemClickListener((parent, view, position, id) -> {
@@ -353,7 +353,9 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         ProvinceOpener provinceOpener = new ProvinceOpener(this);
 
         db = provinceOpener.getWritableDatabase();
+
          //provinceOpener.onDowngrade(db,1,1);
+
         for (Province result : resultList)
         {
             //add to the database
@@ -402,7 +404,9 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         String [] columns = {ProvinceOpener.COL_COUNTRY,ProvinceOpener.COL_COUNTRY_CODE,
                 ProvinceOpener.COL_LATITUDE,ProvinceOpener.COL_LONGGITUDE,
                 ProvinceOpener.COL_DATE, ProvinceOpener.COL_PROVINCE, ProvinceOpener.COL_CASE_NUMBER
-                            };
+
+        };
+
         String[] args = {database.getCountry(), database.getDate()};
         Cursor results = db.query(false, ProvinceOpener.TABLE_NAME, columns, ProvinceOpener.COL_COUNTRY + "=?" + " and "  +
                 ProvinceOpener.COL_DATE + "=?", args,null, null, null, null);
@@ -479,7 +483,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
             Database databaseRec = (Database) getItem(position);
             LayoutInflater inflater = getLayoutInflater();
 
-             View rowView = inflater.inflate(R.layout.row_countrydate_layout, parent, false);
+            View rowView = inflater.inflate(R.layout.row_countrydate_layout, parent, false);
 
             TextView countryView = rowView.findViewById( R.id.country_name_text_view);
             countryView.setText(databaseRec.getCountry());

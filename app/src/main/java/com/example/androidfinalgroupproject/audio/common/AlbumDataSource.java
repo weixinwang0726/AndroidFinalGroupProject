@@ -12,6 +12,7 @@ import java.util.List;
  * @Author: Yanan Cheng
  * @Date: 2020/11/19 12:16
  * @Version: 1.0
+ * Album data source
  */
 public class AlbumDataSource {
     private SQLiteDatabase mSQLiteDatabase;
