@@ -13,8 +13,8 @@ import com.example.androidfinalgroupproject.R;
 
 
 /**
- * A simple subclass.
- * create an instance of this fragment.
+ * COVID-19 Case Data
+ * Instance CovidDetailsFragment of the fragment.
  */
 public class CovidDetailsFragment extends Fragment {
 

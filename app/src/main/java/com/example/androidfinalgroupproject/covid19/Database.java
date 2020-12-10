@@ -1,11 +1,81 @@
 package com.example.androidfinalgroupproject.covid19;
 
 public class Database {
-    private String country;
-    private String date;
+
+
     private long id;
+    private String country;
+    private String countrycode;
     private String province;
-    private String covidcase;
+    private String latitude;
+    private String longitude;
+    private String casenumber;
+    private String date;
+
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCountrycode() {
+        return countrycode;
+    }
+
+    public void setCountrycode(String countrycode) {
+        this.countrycode = countrycode;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getCasenumber() {
+        return casenumber;
+    }
+
+    public void setCasenumber(String casenumber) {
+        this.casenumber = casenumber;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public Database() {
     }
@@ -20,42 +90,8 @@ public class Database {
         this.country = country;
         this.date = date;
         this.province = province;
-        this.covidcase = covidcase;
+        this.casenumber = covidcase;
     }
 
-    public String getCountry() {
-        return this.country;
-    }
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getDate() {
-        return date;
-    }
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public long getId() {
-        return id;
-    }
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getProvince() {
-        return this.province;
-    }
-    public void setProvince(String province) {
-        this.province = province;
-    }
-
-    public String getCovidcase(){
-        return this.covidcase;
-    }
-    public void setCovidcase(String covidcase) {
-        this.covidcase = covidcase;
-    }
 
 }
