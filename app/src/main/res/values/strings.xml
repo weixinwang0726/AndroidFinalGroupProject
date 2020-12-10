@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidFinalGroupProject</string>
+    <string name="app_name">GroupProject</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="btn_to_ticket_master">TicketMaster</string>

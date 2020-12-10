@@ -22,9 +22,10 @@
             android:textStyle="italic" />
     </LinearLayout>
 
-    <Button
+    <TextView
         android:id="@+id/help_btn"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tm_help_btn" />
+        android:background="@drawable/tm_help"
+         />
 </LinearLayout>
