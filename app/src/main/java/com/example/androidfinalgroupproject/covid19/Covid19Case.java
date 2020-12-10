@@ -353,7 +353,7 @@ public class Covid19Case extends AppCompatActivity implements NavigationView.OnN
         ProvinceOpener provinceOpener = new ProvinceOpener(this);
 
         db = provinceOpener.getWritableDatabase();
-       provinceOpener.onDowngrade(db,1,1);
+       //provinceOpener.onDowngrade(db,1,1);
         for (Province result : resultList)
         {
             //add to the database
