@@ -100,9 +100,9 @@
     <string name="covid_longitude">经度：</string>
 
     <!--strings in covid_menu.xml-->
-    <string name="choice1">转到主页 </string>
-    <string name="choice2">数据库记录 </string>
-    <string name="choice3">"关于 "</string>
+    <string name="choice1">回到主页</string>
+    <string name="choice2">数据库</string>
+    <string name="choice3">关于</string>
     <string name="choice4">帮助</string>
 
     <!--strings in header_covid.xml-->

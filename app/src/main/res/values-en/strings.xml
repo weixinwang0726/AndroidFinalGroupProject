@@ -100,9 +100,9 @@
     <string name="covid_latitude">Latitude: </string>
     <string name="covid_longitude">Longitude: </string>
 
-    <string name="choice1">Go to Main Page </string>
-    <string name="choice2">"Database "</string>
-    <string name="choice3">"About "</string>
+    <string name="choice1">"Go to Main Page "</string>
+    <string name="choice2">Database</string>
+    <string name="choice3">About</string>
     <string name="choice4">Help</string>
 
     <string name="covidtitle">Covid-19 Case Detail</string>
