@@ -51,9 +51,17 @@ public class AlbumDetailPage extends Fragment {
     private ImageButton mImageButton;
     private Button mButton;
     private AlbumDataSource mDataSource;
-
     private String albumName, artistName, albumId;
     private ArrayList<String> songs = new ArrayList<>();
+
+    /**
+     * Display all the album of the searching artist
+     * and save and display favorite list
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
 
     @Nullable
     @Override
@@ -76,12 +84,12 @@ public class AlbumDetailPage extends Fragment {
         mTextViewAlbum.setText("Album: " + albumName);
         mTextViewArtist.setText("Artist: " + artistName);
 
-        // 获得新的url，加载album的歌曲数据
+        // get the new url，loading the data of this album
         String url = "https://theaudiodb.com/api/v1/json/1/track.php?m=" + albumId;
         SearchAlbum searchAlbum = new SearchAlbum();
         searchAlbum.execute(url);
 
-        // 点击歌曲跳转到浏览器用google搜索
+        // click on search to google website
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -91,7 +99,7 @@ public class AlbumDetailPage extends Fragment {
             }
         });
 
-        // 设置hide_button点击事件
+        // set hide_button activity
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,7 +107,9 @@ public class AlbumDetailPage extends Fragment {
             }
         });
 
-        // 将album添加到favorite列表中
+        /**add the favorite album in list
+         *
+         */
         mImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,7 +132,9 @@ public class AlbumDetailPage extends Fragment {
         return view;
     }
 
-    // 后台处理歌曲信息显示到listview里
+    /**AsyncTask inner class to retrieve data from a http server.
+     *
+     */
     private class SearchAlbum extends AsyncTask<String, Integer, String> {
 
         @Override
